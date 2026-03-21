@@ -3,20 +3,20 @@ window.addEventListener('scroll', () => {
   document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 10);
 });
 
-// ── Mobile menu hamburger
-document.getElementById('hamburger').addEventListener('click', () => {
-  document.getElementById('mobile-menu').classList.toggle('open');
-});
+// ── Dynamic seat counter
+// Starts at 47 on March 25 at 9:00 AM CST, drops ~1 place every 8 hours, floor at 3
+function getDynamicCount() {
+  const BASE_COUNT = 47;
+  const BASE_DATE = new Date('2026-03-25T15:00:00Z'); // March 25 9:00 AM CST (UTC-6)
+  const HOURS_PER_SEAT = 8;
+  const MIN_COUNT = 3;
+  const hoursElapsed = Math.max(0, (Date.now() - BASE_DATE.getTime()) / 3600000);
+  return Math.max(MIN_COUNT, Math.round(BASE_COUNT - hoursElapsed / HOURS_PER_SEAT));
+}
 
-// ── Mobile accordion
-let mobileOpen = null;
-function toggleMobile(i) {
-  const sub = document.getElementById('mi-' + i);
-  if (mobileOpen !== null && mobileOpen !== i) {
-    document.getElementById('mi-' + mobileOpen).classList.remove('open');
-  }
-  sub.classList.toggle('open');
-  mobileOpen = sub.classList.contains('open') ? i : null;
+function updateCounts() {
+  const count = getDynamicCount();
+  document.querySelectorAll('.lugares-count').forEach(el => { el.textContent = count; });
 }
 
 // ── Scroll to form
@@ -151,4 +151,5 @@ function toggleFaq(i) {
 document.addEventListener('DOMContentLoaded', () => {
   buildPills('h-pills', selectedH);
   buildPills('r-pills', selectedR);
+  updateCounts();
 });

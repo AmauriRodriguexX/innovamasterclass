@@ -10,49 +10,14 @@
 
 <!-- NAVBAR -->
 <nav class="nav" id="main-nav">
-  <div class="nav-inner">
+  <div class="nav-inner" style="justify-content:center">
     <img src="assets/img/logo.svg" alt="Innova Schools" class="nav-logo"/>
-    <div class="nav-links">
-      <div class="nav-item">
-        <button class="nav-btn">Acerca de Innova <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="dropdown">
-          <a href="#">¿Quiénes somos?</a><a href="#">Preguntas frecuentes</a><a href="#">Blog</a><a href="#">Galería</a>
-        </div>
-      </div>
-      <div class="nav-item">
-        <button class="nav-btn">Modelo Educativo <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="dropdown">
-          <a href="#">Modelo Educativo</a><a href="#">Hagámoslo mejor</a><a href="#">Global English Program</a><a href="#">Talleres extracurriculares</a><a href="#">Nuestro equipo académico</a><a href="#">Perfil del estudiante Innova</a>
-        </div>
-      </div>
-      <div class="nav-item">
-        <button class="nav-btn">Niveles educativos <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="dropdown">
-          <a href="#">Preescolar</a><a href="#">Primaria baja</a><a href="#">Primaria alta</a><a href="#">Secundaria</a><a href="#">Bachillerato</a><a href="#">Todos los Niveles Educativos</a>
-        </div>
-      </div>
-      <div class="nav-item">
-        <button class="nav-btn">Nuestros Campus <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="dropdown">
-          <a href="#">Atizapán</a><a href="#">Coacalco</a><a href="#">Cuautitlán Izcalli</a><a href="#">Ecatepec</a><a href="#">Huehuetoca</a><a href="#">Ojo de Agua</a><a href="#">Tultepec</a><a href="#">Zumpango</a>
-        </div>
-      </div>
-    </div>
-    <button class="hamburger" id="hamburger" aria-label="Menú">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-  <div class="mobile-menu" id="mobile-menu">
-    <div><button class="mobile-item-btn" onclick="toggleMobile(0)">Acerca de Innova <svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="mobile-sub" id="mi-0"><a href="#">¿Quiénes somos?</a><a href="#">Preguntas frecuentes</a><a href="#">Blog</a><a href="#">Galería</a></div></div>
-    <div><button class="mobile-item-btn" onclick="toggleMobile(1)">Modelo Educativo <svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="mobile-sub" id="mi-1"><a href="#">Modelo Educativo</a><a href="#">Hagámoslo mejor</a><a href="#">Global English Program</a><a href="#">Talleres extracurriculares</a><a href="#">Nuestro equipo académico</a><a href="#">Perfil del estudiante Innova</a></div></div>
-    <div><button class="mobile-item-btn" onclick="toggleMobile(2)">Niveles educativos <svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="mobile-sub" id="mi-2"><a href="#">Preescolar</a><a href="#">Primaria baja</a><a href="#">Primaria alta</a><a href="#">Secundaria</a><a href="#">Bachillerato</a><a href="#">Todos los Niveles Educativos</a></div></div>
-    <div><button class="mobile-item-btn" onclick="toggleMobile(3)">Nuestros Campus <svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="mobile-sub" id="mi-3"><a href="#">Atizapán</a><a href="#">Coacalco</a><a href="#">Cuautitlán Izcalli</a><a href="#">Ecatepec</a><a href="#">Huehuetoca</a><a href="#">Ojo de Agua</a><a href="#">Tultepec</a><a href="#">Zumpango</a></div></div>
   </div>
 </nav>
 
 <!-- URGENCY BAR -->
 <div class="urgency" id="urgency-bar">
-  <span class="urgency-text">⏱ Quedan 47 lugares · 🗓 Viernes 28 de marzo · 6:30 PM ·</span>
+  <span class="urgency-text">⏱ Quedan <span class="lugares-count">47</span> lugares · 🗓 Viernes 28 de marzo · 6:30 PM ·</span>
   <button class="urgency-cta" onclick="scrollToForm()">Regístrate gratis →</button>
   <button class="urgency-close" onclick="document.getElementById('urgency-bar').style.display='none'" aria-label="Cerrar">
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
@@ -67,7 +32,7 @@
     <div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px">
         <span class="badge badge-green">✓ TOTALMENTE GRATIS</span>
-        <span class="badge badge-orange">⏱ Quedan 47 lugares</span>
+        <span class="badge badge-orange">⏱ Quedan <span class="lugares-count">47</span> lugares</span>
       </div>
       <p style="font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:10px">Masterclass Online · Innova Schools</p>
       <h1>Aprende a formar hijos <span>seguros, responsables</span> y listos para el mundo.</h1>
@@ -97,7 +62,7 @@
       <div class="form-card" id="hero-form-wrap">
         <p class="form-eyebrow">Masterclass gratuito · 28 de marzo</p>
         <h3>Reserva tu lugar ahora</h3>
-        <p class="form-sub">⏱ Quedan 47 lugares · Solo 60 segundos</p>
+        <p class="form-sub">⏱ Quedan <span class="lugares-count">47</span> lugares · Solo 60 segundos</p>
         <form id="hero-form" novalidate onsubmit="submitForm(event,'hero')">
           <div class="field"><label>Nombre completo <span class="req">*</span></label><input type="text" id="h-nombre" placeholder="Tu nombre y apellido"/><div class="err-msg" id="h-nombre-err"></div></div>
           <div class="field"><label>Correo electrónico <span class="req">*</span></label><input type="email" id="h-email" placeholder="nombre@correo.com"/><div class="hint">Aquí te enviamos el link de acceso</div><div class="err-msg" id="h-email-err"></div></div>
@@ -167,10 +132,10 @@
     <p class="section-sub" style="margin-bottom:48px">Cada módulo es práctico y aplicable de inmediato. Sin teoría innecesaria.</p>
     <div class="modules-inner">
       <div>
-        <div class="module-item"><div class="mod-num">1</div><div><h3 style="font-size:16px;font-weight:600;color:#111827;margin-bottom:4px">Cómo elegir la escuela correcta según la etapa de tu hijo</h3><p style="font-size:14px;color:#6B7280;line-height:1.5;margin-bottom:6px">Criterios concretos para Preescolar, Primaria, Secundaria y Bachillerato.</p><span style="font-size:13px;font-weight:500;color:#8DBA38">⏱ 45 min</span></div></div>
-        <div class="module-item"><div class="mod-num">2</div><div><h3 style="font-size:16px;font-weight:600;color:#111827;margin-bottom:4px">Entendiendo la Certificación Cambridge</h3><p style="font-size:14px;color:#6B7280;line-height:1.5;margin-bottom:6px">Qué es, qué NO es, y cómo impacta en el futuro académico y profesional.</p><span style="font-size:13px;font-weight:500;color:#8DBA38">⏱ 35 min</span></div></div>
-        <div class="module-item"><div class="mod-num">3</div><div><h3 style="font-size:16px;font-weight:600;color:#111827;margin-bottom:4px">Las 10 preguntas que debes hacerle a cualquier colegio</h3><p style="font-size:14px;color:#6B7280;line-height:1.5;margin-bottom:6px">Checklist de preguntas que separan una buena escuela de una excelente.</p><span style="font-size:13px;font-weight:500;color:#8DBA38">⏱ 40 min</span></div></div>
-        <div class="module-item" style="border-bottom:none"><div class="mod-num">4</div><div><h3 style="font-size:16px;font-weight:600;color:#111827;margin-bottom:4px">Q&amp;A en vivo con la expositora</h3><p style="font-size:14px;color:#6B7280;line-height:1.5;margin-bottom:6px">Respuesta directa a tus dudas específicas.</p><span style="font-size:13px;font-weight:500;color:#8DBA38">⏱ 30 min</span></div></div>
+        <div class="module-item"><div class="mod-num">1</div><div><h3 style="font-size:16px;font-weight:600;color:#111827;margin-bottom:4px">Límites efectivos: reglas que tus hijos realmente respetan</h3><p style="font-size:14px;color:#6B7280;line-height:1.5;margin-bottom:6px">Cómo establecer estructura en casa sin conflictos, gritos ni negociaciones interminables.</p><span style="font-size:13px;font-weight:500;color:#8DBA38">⏱ 45 min</span></div></div>
+        <div class="module-item"><div class="mod-num">2</div><div><h3 style="font-size:16px;font-weight:600;color:#111827;margin-bottom:4px">Seguridad emocional: autoestima y confianza desde el hogar</h3><p style="font-size:14px;color:#6B7280;line-height:1.5;margin-bottom:6px">Herramientas prácticas para fortalecer el mundo interno de tu hijo en cada etapa de su desarrollo.</p><span style="font-size:13px;font-weight:500;color:#8DBA38">⏱ 35 min</span></div></div>
+        <div class="module-item"><div class="mod-num">3</div><div><h3 style="font-size:16px;font-weight:600;color:#111827;margin-bottom:4px">Responsabilidad: hijos que toman decisiones conscientes</h3><p style="font-size:14px;color:#6B7280;line-height:1.5;margin-bottom:6px">Estrategias por etapa para acompañarlos a ser independientes sin perder el norte.</p><span style="font-size:13px;font-weight:500;color:#8DBA38">⏱ 40 min</span></div></div>
+        <div class="module-item" style="border-bottom:none"><div class="mod-num">4</div><div><h3 style="font-size:16px;font-weight:600;color:#111827;margin-bottom:4px">Q&amp;A en vivo con Laura Rodarte</h3><p style="font-size:14px;color:#6B7280;line-height:1.5;margin-bottom:6px">Preguntas directas sobre tu situación familiar. Sin guión, sin filtros.</p><span style="font-size:13px;font-weight:500;color:#8DBA38">⏱ 30 min</span></div></div>
       </div>
       <div class="info-card">
         <h3 style="font-size:18px;font-weight:700;color:#111827;margin-bottom:24px;padding-bottom:16px;border-bottom:2px solid #F7F8FA">Información del evento</h3>
@@ -190,7 +155,7 @@
   <div class="container">
     <h2 class="section-title" style="margin-bottom:40px">Lo que dicen los papás que ya asistieron</h2>
     <div class="test-grid">
-      <div class="test-card"><div class="stars">★★★★★</div><p class="test-quote"><span class="quote-mark">"</span><span style="position:relative;z-index:1">Recomendaría a Innova Schools porque su sistema es distinto, veo contenta a mi hija y está aprendiendo de una forma diferente.</span></p><div class="test-author"><div class="avatar" style="background:#00659D;border-color:#00659D">AA</div><div><div style="font-size:14px;font-weight:600;color:#111827">Adriana Amparo y Enrique Vázques</div><div style="font-size:12px;color:#9CA3AF">Papás de alumna en Primaria</div></div></div></div>
+      <div class="test-card"><div class="stars">★★★★★</div><p class="test-quote"><span class="quote-mark">"</span><span style="position:relative;z-index:1">Llegué sin saber qué esperar y salí con estrategias que apliqué esa misma semana. Laura habla de lo que vives en casa, sin teoría vacía.</span></p><div class="test-author"><div class="avatar" style="background:#00659D;border-color:#00659D">MI</div><div><div style="font-size:14px;font-weight:600;color:#111827">Marcela Ibáñez R.</div><div style="font-size:12px;color:#9CA3AF">Mamá · Asistió al Masterclass de Febrero</div></div></div></div>
       <div class="test-card"><div class="stars">★★★★★</div><p class="test-quote"><span class="quote-mark">"</span><span style="position:relative;z-index:1">Me fui con información clave para elegir la mejor escuela. Laura explica todo con claridad y sin rodeos.</span></p><div class="test-author"><div class="avatar" style="background:#8DBA38;border-color:#8DBA38">PM</div><div><div style="font-size:14px;font-weight:600;color:#111827">Patricia Morales H.</div><div style="font-size:12px;color:#9CA3AF">Mamá de alumno · Campus Atizapán</div></div></div></div>
       <div class="test-card"><div class="stars">★★★★★</div><p class="test-quote"><span class="quote-mark">"</span><span style="position:relative;z-index:1">Aprendí herramientas reales para aplicar en casa. El módulo de seguridad emocional me abrió los ojos.</span></p><div class="test-author"><div class="avatar" style="background:#EA8215;border-color:#EA8215">DC</div><div><div style="font-size:14px;font-weight:600;color:#111827">Daniela Cruz V.</div><div style="font-size:12px;color:#9CA3AF">Mamá de alumno · Campus Cuautitlán</div></div></div></div>
     </div>
@@ -221,7 +186,7 @@
     </div>
     <div class="reg-card" id="reg-form-wrap">
       <h3>Reserva tu lugar gratis</h3>
-      <p style="font-size:12px;font-weight:600;color:#EA8215;text-align:center;margin-bottom:28px">⏱ Quedan 47 lugares · Sesión: 28 de marzo · 6:30 PM</p>
+      <p style="font-size:12px;font-weight:600;color:#EA8215;text-align:center;margin-bottom:28px">⏱ Quedan <span class="lugares-count">47</span> lugares · Sesión: 28 de marzo · 6:30 PM</p>
       <form id="reg-form" novalidate onsubmit="submitForm(event,'reg')">
         <div class="field"><label>Nombre completo <span class="req">*</span></label><input type="text" id="r-nombre" placeholder="Tu nombre y apellido"/><div class="err-msg" id="r-nombre-err"></div></div>
         <div class="field"><label>Correo electrónico <span class="req">*</span></label><input type="email" id="r-email" placeholder="nombre@correo.com"/><div class="hint">Aquí te mandamos el link de acceso</div><div class="err-msg" id="r-email-err"></div></div>
