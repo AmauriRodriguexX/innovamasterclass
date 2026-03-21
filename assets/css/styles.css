@@ -67,7 +67,8 @@ button { font-family: 'Montserrat', sans-serif; cursor: pointer; }
 .form-card h3 { font-size: 19px; font-weight: 700; color: #111827; text-align: center; margin-bottom: 4px; }
 .form-sub { font-size: 12px; color: #9CA3AF; text-align: center; margin-bottom: 20px; }
 .form-eyebrow { font-size: 11px; font-weight: 700; color: #EA8215; letter-spacing: .07em; text-transform: uppercase; text-align: center; margin-bottom: 4px; }
-@media (min-width: 900px) { .hero-inner { grid-template-columns: 56% 44%; align-items: center; } .hero-form-col { display: block; } }
+.mobile-hero-cta { display: block; margin-bottom: 32px; }
+@media (min-width: 900px) { .hero-inner { grid-template-columns: 56% 44%; align-items: center; } .hero-form-col { display: block; } .mobile-hero-cta { display: none; } }
 
 /* ── SHARED FORM STYLES ── */
 .field { margin-bottom: 12px; }
@@ -179,11 +180,12 @@ button { font-family: 'Montserrat', sans-serif; cursor: pointer; }
 .footer-link:hover { color: #00659d; }
 
 /* ── WHATSAPP ── */
-.wa-btn { position: fixed; bottom: 24px; right: 20px; z-index: 9999; }
-.wa-pulse { position: absolute; inset: -6px; border-radius: 50%; background: rgba(37,211,102,.3); animation: wa-pulse 2.5s ease-out infinite; }
-.wa-link { width: 56px; height: 56px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(37,211,102,.45); transition: transform 150ms; position: relative; z-index: 1; }
+.wa-btn { position: fixed; bottom: 24px; right: 20px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+.wa-wrapper { position: relative; width: 56px; height: 56px; }
+.wa-pulse { position: absolute; inset: -6px; border-radius: 50%; background: rgba(37,211,102,.3); animation: wa-pulse 2.5s ease-out infinite; pointer-events: none; }
+.wa-link { width: 100%; height: 100%; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(37,211,102,.45); transition: transform 150ms; position: relative; z-index: 1; }
 .wa-link:hover { transform: scale(1.08); }
-.wa-tooltip { background: #111827; color: #fff; font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 999px; white-space: nowrap; box-shadow: 0 2px 8px rgba(0,0,0,.2); margin-bottom: 8px; display: none; }
+.wa-tooltip { background: #111827; color: #fff; font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 999px; white-space: nowrap; box-shadow: 0 2px 8px rgba(0,0,0,.2); display: none; margin-bottom: 4px; pointer-events: none; }
 .wa-btn:hover .wa-tooltip { display: block; }
 @keyframes wa-pulse { 0% { transform: scale(1); opacity: .7; } 100% { transform: scale(1.6); opacity: 0; } }
 
