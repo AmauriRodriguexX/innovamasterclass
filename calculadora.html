@@ -43,7 +43,7 @@ button { font-family: 'Montserrat', sans-serif; cursor: pointer; }
 .mobile-sub a:hover { color: #00659D; border-left-color: #00659D; }
 .mobile-cta-wrap { padding: 16px 24px; border-top: 1px solid #EAEDF0; }
 .mobile-cta-btn { display: block; background: #EA8215; color: #fff; text-align: center; padding: 12px; border-radius: 999px; font-size: 14px; font-weight: 700; }
-@media (min-width: 900px) { .nav-links { display: flex; } .hamburger { display: none; } }
+@media (min-width: 900px) { .nav-links { display: flex; } .hamburger { display: none; } .search-btn-mobile { display: none !important; } }
 
 /* ── HERO ── */
 .hero { background: linear-gradient(135deg, #0D1B2A 0%, #00659D 100%); padding: 0; position: relative; overflow: hidden; min-height: 420px; display: flex; align-items: stretch; }
@@ -290,10 +290,13 @@ button { font-family: 'Montserrat', sans-serif; cursor: pointer; }
         </div>
       </div>
       <a href="https://innovaschools.edu.mx/promociones-descuentos/" class="nav-btn" style="font-weight:600;color:#374151">Promociones</a>
+      <button onclick="toggleSearch()" aria-label="Buscar" style="background:none;border:none;cursor:pointer;padding:8px;border-radius:8px;display:flex;align-items:center;color:#374151;transition:color 150ms" onmouseover="this.style.color='#00659D'" onmouseout="this.style.color='#374151'"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
       <a href="https://innovaschools.edu.mx/contacto/" class="nav-btn nav-cta">Inscríbete</a>
     </div>
-    <button onclick="window.location.href='https://innovaschools.edu.mx/?s='" aria-label="Buscar" style="background:none;border:none;cursor:pointer;padding:8px;border-radius:8px;display:flex;align-items:center;color:#374151;transition:color 150ms" onmouseover="this.style.color='#00659D'" onmouseout="this.style.color='#374151'"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
-    <button class="hamburger" onclick="toggleMobile()" aria-label="Menú"><span></span><span></span><span></span></button>
+    <div style="display:flex;align-items:center;gap:0">
+      <button onclick="toggleSearch()" aria-label="Buscar" class="search-btn-mobile" style="background:none;border:none;cursor:pointer;padding:8px;border-radius:8px;display:flex;align-items:center;color:#374151"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
+      <button class="hamburger" onclick="toggleMobile()" aria-label="Menú"><span></span><span></span><span></span></button>
+    </div>
   </div>
   <div class="mobile-menu" id="mobile-menu">
     <button class="mobile-item-btn" onclick="toggleMobileSub('sub-acerca',this)">Acerca de Innova <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -307,6 +310,17 @@ button { font-family: 'Montserrat', sans-serif; cursor: pointer; }
     <div class="mobile-cta-wrap"><a href="https://innovaschools.edu.mx/contacto/" class="mobile-cta-btn">Inscríbete ahora →</a></div>
   </div>
 </nav>
+
+<!-- ── SEARCH OVERLAY ── -->
+<div id="search-overlay" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(13,27,42,0.75);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);align-items:flex-start;justify-content:center;padding-top:80px" onclick="if(event.target===this)toggleSearch()">
+  <button onclick="toggleSearch()" aria-label="Cerrar" style="position:fixed;top:16px;right:16px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:50%;width:40px;height:40px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#fff"><svg width="16" height="16" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  <div style="width:100%;max-width:600px;padding:0 24px">
+    <form onsubmit="submitSearch(event)" style="display:flex;gap:10px">
+      <input id="search-input" type="text" placeholder="Buscar en Innova Schools…" style="flex:1;height:52px;border:none;border-radius:999px;padding:0 22px;font-size:16px;font-family:inherit;outline:none;box-shadow:0 8px 32px rgba(0,0,0,0.3)"/>
+      <button type="submit" style="height:52px;width:52px;border-radius:50%;background:#00659D;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,101,157,0.4)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
+    </form>
+  </div>
+</div>
 
 <!-- ── HERO ── -->
 <section class="hero">
@@ -572,6 +586,8 @@ button { font-family: 'Montserrat', sans-serif; cursor: pointer; }
 // ── NAV
 window.addEventListener('scroll', () => { document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 10); });
 function toggleMobile() { document.getElementById('mobile-menu').classList.toggle('open'); }
+function toggleSearch() { const o = document.getElementById('search-overlay'); const open = o.style.display === 'flex'; o.style.display = open ? 'none' : 'flex'; if (!open) setTimeout(() => document.getElementById('search-input').focus(), 50); }
+function submitSearch(e) { e.preventDefault(); const q = document.getElementById('search-input').value.trim(); if(q) window.location.href = 'https://innovaschools.edu.mx/?s=' + encodeURIComponent(q); }
 function toggleMobileSub(id, btn) {
   const s = document.getElementById(id), isOpen = s.classList.contains('open');
   document.querySelectorAll('.mobile-sub.open').forEach(x => x.classList.remove('open'));
