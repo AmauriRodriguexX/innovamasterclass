@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Innova Schools · 50% de descuento en inscripción · Edomex · Hidalgo · Querétaro</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;background:#fff;color:#111827}
+img{display:block;max-width:100%}
+a{text-decoration:none}
+button{font-family:'Montserrat',sans-serif;cursor:pointer}
+
+/* NAV solo-logo (HubSpot) */
+.nav{position:sticky;top:0;z-index:1000;background:#fff;border-bottom:1px solid #EAEDF0;transition:box-shadow 200ms}
+.nav.scrolled{box-shadow:0 2px 12px rgba(0,0,0,.08)}
+.nav-inner{max-width:1140px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:center}
+.nav-logo{height:36px;width:auto}
+
+/* URGENCY BAR */
+.urgency{background:#EA8215;padding:0 16px;height:44px;display:flex;align-items:center;justify-content:center;gap:12px;position:sticky;top:64px;z-index:999}
+.urgency-text{font-size:13px;font-weight:600;color:#fff;white-space:nowrap}
+.urgency-cta{background:rgba(255,255,255,.2);color:#fff;border:1.5px solid rgba(255,255,255,.6);border-radius:999px;padding:4px 16px;font-size:13px;font-weight:700;white-space:nowrap;cursor:pointer}
+.urgency-close{position:absolute;right:16px;background:none;border:none;color:rgba(255,255,255,.8);width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+@media(max-width:600px){.urgency-text{display:none}}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#0D1B2A 0%,#00659D 100%);padding:64px 0 72px;position:relative;overflow:hidden}
+.hero-inner{max-width:1140px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr;gap:40px;align-items:start}
+.badge{display:inline-flex;align-items:center;border-radius:999px;padding:5px 14px;font-size:12px;font-weight:700}
+.badge-green{background:#EDF6D9;color:#6A9028;border:1px solid #8DBA38}
+.badge-orange{background:#FEF0E0;color:#C4690D;border:1px solid #EA8215}
+.hero h1{font-size:clamp(26px,4.5vw,42px);font-weight:900;line-height:1.1;letter-spacing:-.02em;color:#fff;margin-bottom:14px}
+.hero h1 span{color:#EA8215}
+.hero .sub{font-size:clamp(14px,1.8vw,17px);color:rgba(255,255,255,.82);line-height:1.7;margin-bottom:20px}
+
+/* DESCUENTO BADGE */
+.descuento-badge{background:rgba(234,130,21,.15);border:2px solid #EA8215;border-radius:16px;padding:16px 20px;display:inline-flex;align-items:center;gap:14px;margin-bottom:24px}
+.descuento-num{font-size:48px;font-weight:900;color:#EA8215;line-height:1}
+.descuento-num sup{font-size:22px;vertical-align:super}
+.descuento-info h4{font-size:16px;font-weight:800;color:#fff;margin-bottom:2px}
+.descuento-info p{font-size:12px;color:rgba(255,255,255,.65);line-height:1.4}
+
+/* ESTADOS */
+.estados-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.estado-chip{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:7px 12px;font-size:12px;font-weight:700;color:#fff}
+
+.benefits{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:28px}
+.benefits li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:rgba(255,255,255,.9);line-height:1.5}
+.stats-row{display:flex;padding-top:24px;border-top:1px solid rgba(255,255,255,.15);flex-wrap:wrap}
+.stat{flex:1;min-width:70px;text-align:center;padding:0 12px}
+.stat:not(:last-child){border-right:1px solid rgba(255,255,255,.18)}
+.stat-num{font-size:clamp(22px,3.5vw,32px);font-weight:900;color:#fff;line-height:1}
+.stat-num span{color:#EA8215;font-size:.65em}
+.stat-label{font-size:11px;color:rgba(255,255,255,.6);margin-top:3px}
+.hero-form-col{display:none}
+.form-card{background:#fff;border-radius:20px;padding:32px 28px;box-shadow:0 16px 48px rgba(0,0,0,.28)}
+.form-card h3{font-size:19px;font-weight:700;color:#111827;text-align:center;margin-bottom:4px}
+.form-sub{font-size:12px;color:#9CA3AF;text-align:center;margin-bottom:20px}
+.form-eyebrow{font-size:11px;font-weight:700;color:#EA8215;letter-spacing:.07em;text-transform:uppercase;text-align:center;margin-bottom:4px}
+.mobile-hero-cta{display:block;margin-bottom:32px}
+.hero-decor-tr{position:absolute;top:-80px;right:-80px;width:280px;height:280px;border-radius:0 0 0 100%;background:#8DBA38;opacity:.10;pointer-events:none}
+.hero-decor-bl{position:absolute;bottom:-40px;left:-40px;width:160px;height:160px;border-radius:50%;background:#EA8215;opacity:.09;pointer-events:none}
+@media(min-width:900px){.hero-inner{grid-template-columns:56% 44%;align-items:center}.hero-form-col{display:block}.mobile-hero-cta{display:none}}
+
+/* FORM */
+.field{margin-bottom:12px}
+.field label{display:block;font-size:13px;font-weight:500;color:#374151;margin-bottom:5px}
+.field label .req{color:#EA8215}
+.field label .opt{font-size:11px;color:#9CA3AF;font-weight:400}
+.field input,.field select{width:100%;min-height:48px;padding:12px 14px;border:2px solid #E2E8F0;border-radius:10px;font-size:14px;font-family:'Montserrat',sans-serif;color:#1F2937;background:#fff;outline:none;transition:border-color 150ms;appearance:none}
+.field input:focus,.field select:focus{border-color:#EA8215}
+.field .hint{font-size:11px;color:#9CA3AF;margin-top:3px}
+.err-msg{font-size:11px;color:#D93025;margin-top:3px;min-height:16px}
+.select-wrap{position:relative}
+.select-wrap svg{position:absolute;right:12px;top:50%;transform:translateY(-50%);pointer-events:none}
+.pills{display:flex;flex-wrap:wrap;gap:6px}
+.pill{display:flex;align-items:center;gap:5px;padding:5px 11px;border:2px solid #E2E8F0;border-radius:999px;font-size:12px;color:#374151;background:#fff;cursor:pointer;transition:all 150ms;user-select:none;font-family:'Montserrat',sans-serif}
+.pill.checked{border-color:#00659D;color:#00659D;background:#E8F4FA;font-weight:600}
+.cb-row{display:flex;align-items:flex-start;gap:8px;cursor:pointer;margin-bottom:10px}
+.cb-box{width:18px;height:18px;min-width:18px;border-radius:4px;border:2px solid #E2E8F0;background:#fff;display:flex;align-items:center;justify-content:center;margin-top:1px;transition:all 150ms}
+.cb-box.checked{border-color:#EA8215;background:#EA8215}
+.cb-label{font-size:11px;color:#374151;line-height:1.5}
+.submit-btn{background:#EA8215;color:#fff;border:none;border-radius:999px;padding:14px 24px;font-size:16px;font-weight:700;width:100%;min-height:52px;box-shadow:0 6px 20px rgba(234,130,21,.35);transition:background 200ms,transform 100ms;font-family:'Montserrat',sans-serif;margin-top:16px}
+.submit-btn:hover{background:#C4690D;transform:translateY(-1px)}
+.privacy-note{font-size:11px;color:#9CA3AF;text-align:center;margin-top:10px}
+.success-card{text-align:center;padding:16px 0}
+.success-icon{width:64px;height:64px;border-radius:50%;background:#EDF6D9;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+
+/* RECOGNITION */
+.recognition{background:#fff;padding:40px 24px;border-bottom:1px solid #EAEDF0}
+.recognition-inner{max-width:1140px;margin:0 auto}
+.logos{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:12px 20px;margin-top:24px}
+.logo-card{background:#00659D;border-radius:20px;padding:18px 24px;display:flex;align-items:center;justify-content:center;width:160px;height:90px;flex-shrink:0;transition:transform 150ms,box-shadow 150ms}
+.logo-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,101,157,.35)}
+.logo-card img{max-width:100%;max-height:52px;object-fit:contain;filter:brightness(0) invert(1)}
+@media(max-width:600px){.logo-card{width:130px;height:76px;padding:14px 18px}}
+
+/* CAMPUS POR ESTADO */
+.campus-section{background:#F7F8FA;padding:72px 0}
+.estados-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:40px}
+.estado-block{background:#fff;border-radius:16px;padding:24px;border:1px solid #EAEDF0}
+.estado-block h4{font-size:16px;font-weight:800;color:#111827;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.estado-block h4 span{font-size:11px;font-weight:600;background:#E8F4FA;color:#00659D;padding:2px 8px;border-radius:999px}
+.estado-block p{font-size:12px;color:#6B7280;margin-bottom:14px}
+.campus-list{display:flex;flex-direction:column;gap:8px}
+.campus-item{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;background:#F7F8FA;border-radius:8px;border:1px solid #EAEDF0}
+.campus-item-name{font-size:13px;font-weight:600;color:#374151}
+.campus-item-nivel{font-size:11px;color:#9CA3AF}
+
+/* PILARES */
+.pilares-section{background:#fff;padding:72px 0}
+.pilares-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:40px}
+.pilar-card{border-radius:16px;padding:28px 24px;border:1px solid #EAEDF0;border-top:3px solid #EA8215;transition:box-shadow 200ms,transform 150ms}
+.pilar-card:hover{box-shadow:0 8px 24px rgba(0,0,0,.08);transform:translateY(-2px)}
+.pilar-icon{font-size:32px;margin-bottom:14px;display:block}
+.pilar-card h4{font-size:15px;font-weight:700;color:#111827;margin-bottom:8px}
+.pilar-card p{font-size:13px;color:#6B7280;line-height:1.6}
+
+/* TESTIMONIALS */
+.testimonials{background:#F7F8FA;padding:72px 0}
+.test-grid{display:grid;grid-template-columns:1fr;gap:24px;margin-bottom:56px}
+.test-card{border:1px solid #EAEDF0;border-left:4px solid #8DBA38;border-radius:16px;padding:24px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.06);transition:box-shadow 200ms,transform 150ms}
+.test-card:hover{box-shadow:0 8px 24px rgba(0,0,0,.12);transform:translateY(-2px)}
+.stars{color:#EA8215;font-size:16px;margin-bottom:12px;letter-spacing:2px}
+.test-quote{font-size:15px;color:#374151;font-style:italic;line-height:1.6;margin-bottom:20px;position:relative;padding-left:8px}
+.quote-mark{position:absolute;top:-8px;left:-4px;font-size:40px;color:#E8F4FA;line-height:1;font-style:normal}
+.test-author{display:flex;align-items:center;gap:12px}
+.avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;flex-shrink:0;border:2px solid}
+.trust-row{background:#fff;border-radius:20px;padding:28px 32px;display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.trust-item{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px}
+@media(min-width:768px){.test-grid{grid-template-columns:repeat(3,1fr)}.trust-row{grid-template-columns:repeat(4,1fr)}}
+
+/* REG SECTION */
+.reg-section{background:linear-gradient(135deg,#00659D 0%,#004A7C 100%);padding:80px 0;position:relative;overflow:hidden}
+.reg-inner{max-width:1140px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr;gap:48px;align-items:center}
+.reg-card{background:#fff;border-radius:24px;padding:40px;box-shadow:0 12px 40px rgba(0,0,0,.25)}
+.reg-card h3{font-size:22px;font-weight:700;color:#111827;text-align:center;margin-bottom:6px}
+@media(min-width:900px){.reg-inner{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.reg-card{padding:28px 20px}}
+
+/* FAQ */
+.faq{background:#F7F8FA;padding:72px 0}
+.faq-inner{max-width:760px;margin:0 auto;padding:0 24px}
+.faq-item{background:#fff;border:1px solid #EAEDF0;border-left:4px solid transparent;border-radius:12px;overflow:hidden;margin-bottom:12px;transition:border-color 200ms}
+.faq-item.open{border-color:#EA8215;border-left-color:#EA8215;box-shadow:0 4px 12px rgba(234,130,21,.08)}
+.faq-btn{width:100%;display:flex;align-items:center;justify-content:space-between;padding:20px 24px;background:none;border:none;font-size:15px;font-weight:600;color:#111827;text-align:left;gap:16px;font-family:'Montserrat',sans-serif}
+.faq-btn svg{flex-shrink:0;transition:transform 250ms}
+.faq-item.open .faq-btn svg{transform:rotate(180deg)}
+.faq-answer{display:none;padding:0 24px 20px}
+.faq-item.open .faq-answer{display:block}
+.faq-divider{height:1px;background:#EAEDF0;margin-bottom:16px}
+
+/* FOOTER */
+.footer{background:#E7E8F1;padding:32px 0}
+.footer-inner{max-width:1140px;margin:0 auto;padding:0 24px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px}
+.footer-text{font-size:12px;color:#62668a}
+.footer-link{color:#62668a}
+.footer-link:hover{color:#00659d}
+
+/* WHATSAPP */
+.wa-btn{position:fixed;bottom:24px;right:20px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end}
+.wa-wrapper{position:relative;width:56px;height:56px}
+.wa-pulse{position:absolute;inset:-6px;border-radius:50%;background:rgba(37,211,102,.3);animation:wa-pulse 2.5s ease-out infinite;pointer-events:none}
+.wa-link{width:100%;height:100%;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,.45);transition:transform 150ms;position:relative;z-index:1}
+.wa-link:hover{transform:scale(1.08)}
+.wa-tooltip{position:absolute;bottom:calc(100% + 12px);right:0;background:#111827;color:#fff;font-size:12px;font-weight:500;padding:6px 14px;border-radius:999px;white-space:nowrap;opacity:0;visibility:hidden;transition:opacity 200ms}
+.wa-btn:hover .wa-tooltip{opacity:1;visibility:visible}
+@keyframes wa-pulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.6);opacity:0}}
+
+/* UTILS */
+.section-eyebrow{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-align:center;margin-bottom:8px}
+.section-title{font-size:clamp(22px,3vw,32px);font-weight:700;color:#111827;text-align:center;line-height:1.25;margin-bottom:12px}
+.section-sub{font-size:16px;color:#6B7280;text-align:center;line-height:1.6}
+.container{max-width:1140px;margin:0 auto;padding:0 24px}
+.decor-tl{position:absolute;top:-80px;left:-60px;width:220px;height:220px;border-radius:0 100% 0 0;background:#8DBA38;opacity:.15;pointer-events:none}
+.decor-br{position:absolute;bottom:-50px;right:-50px;width:180px;height:180px;border-radius:50%;background:#EA8215;opacity:.12;pointer-events:none}
+.btn-orange{background:#EA8215;color:#fff;border:none;border-radius:999px;padding:14px 24px;font-size:15px;font-weight:700;width:100%;min-height:52px;margin-top:24px;box-shadow:0 4px 16px rgba(234,130,21,.25);transition:background 200ms;font-family:'Montserrat',sans-serif;cursor:pointer}
+.btn-orange:hover{background:#C4690D}
+  </style>
+</head>
+<body>
+
+<!-- NAV solo-logo HubSpot -->
+<nav class="nav" id="main-nav">
+  <div class="nav-inner">
+    <img src="assets/img/logo.svg" alt="Innova Schools" class="nav-logo" style="height:52px"/>
+  </div>
+</nav>
+
+<!-- URGENCY BAR -->
+<div class="urgency" id="urgency-bar">
+  <span class="urgency-text">🏷️ 50% de descuento en inscripción · Válido para las primeras 30 familias · Ciclo 26-27</span>
+  <button class="urgency-cta" onclick="scrollToForm()">Quiero mi descuento →</button>
+  <button class="urgency-close" onclick="document.getElementById('urgency-bar').style.display='none'" aria-label="Cerrar">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  </button>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-decor-tr"></div>
+  <div class="hero-decor-bl"></div>
+  <div class="hero-inner">
+    <div>
+      <img src="assets/img/logo.svg" alt="Innova Schools" style="height:56px;width:auto;margin-bottom:20px;filter:brightness(0) invert(1)"/>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px">
+        <span class="badge badge-green">✓ Inscripción con descuento</span>
+        <span class="badge badge-orange">⏱ Cupo limitado · Ciclo 26-27</span>
+      </div>
+      <p style="font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:10px">Innova Schools · Ciclo Escolar 2026–27</p>
+      <h1>Inscribe a tu hijo con <span>50% de descuento</span> en inscripción.</h1>
+      <p class="sub">Educación privada de calidad, avalada por la SEP y reconocida por el Foro Económico Mundial — a un precio accesible para las familias de Edomex, Hidalgo y Querétaro.</p>
+
+      <!-- BADGE DESCUENTO -->
+      <div class="descuento-badge">
+        <div class="descuento-num"><sup>%</sup>50</div>
+        <div class="descuento-info">
+          <h4>OFF en inscripción</h4>
+          <p>Válido para las primeras 30 familias<br>Ciclo escolar 2026-2027</p>
+        </div>
+      </div>
+
+      <!-- ESTADOS -->
+      <div class="estados-chips">
+        <div class="estado-chip">📍 Estado de México · 9 campus</div>
+        <div class="estado-chip">📍 Hidalgo · 1 campus</div>
+        <div class="estado-chip">📍 Querétaro · 2 campus</div>
+      </div>
+
+      <ul class="benefits">
+        <li><svg width="18" height="18" viewBox="0 0 20 20" fill="none" style="flex-shrink:0;margin-top:3px"><circle cx="10" cy="10" r="10" fill="#8DBA38"/><path d="M5.5 10.5L8.5 13.5L14.5 7.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Modelo educativo avalado por la SEP con habilidades del siglo XXI</li>
+        <li><svg width="18" height="18" viewBox="0 0 20 20" fill="none" style="flex-shrink:0;margin-top:3px"><circle cx="10" cy="10" r="10" fill="#8DBA38"/><path d="M5.5 10.5L8.5 13.5L14.5 7.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Programa bilingüe con certificación Cambridge desde preescolar</li>
+        <li><svg width="18" height="18" viewBox="0 0 20 20" fill="none" style="flex-shrink:0;margin-top:3px"><circle cx="10" cy="10" r="10" fill="#8DBA38"/><path d="M5.5 10.5L8.5 13.5L14.5 7.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Instalaciones y mobiliario diseñados para el aprendizaje activo</li>
+        <li><svg width="18" height="18" viewBox="0 0 20 20" fill="none" style="flex-shrink:0;margin-top:3px"><circle cx="10" cy="10" r="10" fill="#8DBA38"/><path d="M5.5 10.5L8.5 13.5L14.5 7.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Excelencia académica a un precio accesible para tu familia</li>
+      </ul>
+
+      <button class="btn-orange mobile-hero-cta" onclick="scrollToForm()">Quiero el 50% de descuento →</button>
+
+      <div class="stats-row">
+        <div class="stat"><div class="stat-num">60<span>K+</span></div><div class="stat-label">alumnos egresados</div></div>
+        <div class="stat"><div class="stat-num">12</div><div class="stat-label">campus disponibles</div></div>
+        <div class="stat"><div class="stat-num">50<span>%</span></div><div class="stat-label">dto. en inscripción</div></div>
+      </div>
+    </div>
+
+    <!-- FORM HERO -->
+    <div class="hero-form-col">
+      <div class="form-card" id="hero-form-wrap">
+        <p class="form-eyebrow">50% OFF · Solo 30 lugares</p>
+        <h3>Agenda tu evaluación</h3>
+        <p class="form-sub">⏱ Quedan <span class="lugares-count">28</span> lugares · Solo 60 segundos</p>
+        <form id="hero-form" novalidate onsubmit="submitForm(event,'hero')">
+          <div class="field"><label>Nombre completo <span class="req">*</span></label><input type="text" id="h-nombre" placeholder="Tu nombre y apellido"/><div class="err-msg" id="h-nombre-err"></div></div>
+          <div class="field"><label>Correo electrónico <span class="req">*</span></label><input type="email" id="h-email" placeholder="nombre@correo.com"/><div class="hint">Aquí te enviamos la confirmación</div><div class="err-msg" id="h-email-err"></div></div>
+          <div class="field"><label>Teléfono <span class="req">*</span></label><input type="tel" id="h-tel" placeholder="10 dígitos"/><div class="err-msg" id="h-tel-err"></div></div>
+          <div class="field"><label>Campus de interés <span class="opt">(opc.)</span></label>
+            <div class="select-wrap">
+              <select id="h-campus">
+                <option value="">Campus (opcional)</option>
+                <optgroup label="Estado de México"><option>Atizapán</option><option>Coacalco</option><option>Cuautitlán Izcalli</option><option>Ecatepec</option><option>Huehuetoca</option><option>Ojo de Agua / Tecámac</option><option>Tultepec</option><option>Zumpango</option><option>Chalco</option></optgroup>
+                <optgroup label="Hidalgo"><option>Tizayuca</option></optgroup>
+                <optgroup label="Querétaro"><option>El Marqués</option><option>La Joya</option></optgroup>
+                <option value="ns">Aún no lo sé</option>
+              </select>
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+          <div class="field"><label>¿A qué nivel ingresa tu hijo/a? <span class="req">*</span></label><div class="pills" id="h-pills"></div><div class="err-msg" id="h-niveles-err"></div></div>
+          <div class="field"><label>¿Cómo te enteraste? <span class="req">*</span></label>
+            <div class="select-wrap"><select id="h-enterado"><option value="">Selecciona</option><option>Redes sociales</option><option>WhatsApp</option><option>Recomendación de un amigo</option><option>Búsqueda en Google</option><option>Correo electrónico</option><option>Otro</option></select><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="err-msg" id="h-enterado-err"></div>
+          </div>
+          <div class="cb-row" onclick="toggleCb('h-privacy')"><div class="cb-box" id="h-privacy-box"></div><span class="cb-label">He leído y acepto el <a href="https://innovaschools.edu.mx/aviso-de-privacidad/" style="color:#00659D;font-weight:600">Aviso de Privacidad</a> <span style="color:#EA8215">*</span></span></div>
+          <div class="err-msg" id="h-privacy-err" style="margin-bottom:8px"></div>
+          <div class="cb-row" onclick="toggleCb('h-comms')"><div class="cb-box" id="h-comms-box"></div><span class="cb-label">Acepto recibir comunicaciones de Innova Schools México.</span></div>
+          <button type="submit" class="submit-btn">Quiero el 50% de descuento →</button>
+          <p class="privacy-note">🔒 Tus datos están seguros. Sin spam.<br><small>*Consulta niveles y tarjetas participantes. Válido hasta agotar lugares.</small></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGOS -->
+<section class="recognition">
+  <div class="recognition-inner">
+    <h2 class="section-title">Con el respaldo de instituciones líderes mundiales</h2>
+    <div class="logos">
+      <div class="logo-card"><img src="https://innovaschools.edu.mx/wp-content/uploads/2024/10/world-economic-forum.png" alt="World Economic Forum"/></div>
+      <div class="logo-card"><img src="https://innovaschools.edu.mx/wp-content/uploads/2024/10/business-insider.png" alt="Business Insider"/></div>
+      <div class="logo-card"><img src="https://innovaschools.edu.mx/wp-content/uploads/2024/10/fortune.png" alt="Fortune"/></div>
+      <div class="logo-card"><img src="https://innovaschools.edu.mx/wp-content/uploads/2024/10/telefonica.png" alt="Telefónica"/></div>
+      <div class="logo-card"><img src="https://innovaschools.edu.mx/wp-content/uploads/2024/10/harvard-business-review.png" alt="Harvard Business Review"/></div>
+      <div class="logo-card"><img src="https://innovaschools.edu.mx/wp-content/uploads/2024/10/bid.png" alt="BID"/></div>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPUS POR ESTADO -->
+<section class="campus-section">
+  <div class="container">
+    <p class="section-eyebrow" style="color:#EA8215">Disponibilidad por estado</p>
+    <h2 class="section-title">Campus participantes en la promoción</h2>
+    <p class="section-sub">El 50% de descuento aplica en todos los campus de Edomex, Hidalgo y Querétaro para el ciclo 26-27.</p>
+    <div class="estados-grid">
+      <div class="estado-block">
+        <h4>Estado de México <span>9 campus</span></h4>
+        <p>El estado con mayor presencia Innova. Desde primaria hasta bachillerato.</p>
+        <div class="campus-list">
+          <div class="campus-item"><span class="campus-item-name">Atizapán</span><span class="campus-item-nivel">Primaria · Secundaria</span></div>
+          <div class="campus-item"><span class="campus-item-name">Coacalco</span><span class="campus-item-nivel">Preescolar → Bachillerato</span></div>
+          <div class="campus-item"><span class="campus-item-name">Cuautitlán Izcalli</span><span class="campus-item-nivel">Preescolar → Bachillerato</span></div>
+          <div class="campus-item"><span class="campus-item-name">Ecatepec</span><span class="campus-item-nivel">Preescolar → Bachillerato</span></div>
+          <div class="campus-item"><span class="campus-item-name">Huehuetoca</span><span class="campus-item-nivel">Preescolar → Bachillerato</span></div>
+          <div class="campus-item"><span class="campus-item-name">Ojo de Agua</span><span class="campus-item-nivel">Primaria → Bachillerato</span></div>
+          <div class="campus-item"><span class="campus-item-name">Tultepec</span><span class="campus-item-nivel">Preescolar · Primaria · Secundaria</span></div>
+          <div class="campus-item"><span class="campus-item-name">Zumpango</span><span class="campus-item-nivel">Preescolar · Primaria · Secundaria</span></div>
+          <div class="campus-item"><span class="campus-item-name">Chalco</span><span class="campus-item-nivel">Primaria · Secundaria</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="estado-block" style="margin-bottom:24px">
+          <h4>Hidalgo <span>1 campus</span></h4>
+          <p>Campus Tizayuca, con todos los niveles disponibles.</p>
+          <div class="campus-list">
+            <div class="campus-item"><span class="campus-item-name">Tizayuca</span><span class="campus-item-nivel">Preescolar → Bachillerato</span></div>
+          </div>
+        </div>
+        <div class="estado-block">
+          <h4>Querétaro <span>2 campus</span></h4>
+          <p>Dos campus en El Marqués y La Joya, con cobertura completa de niveles.</p>
+          <div class="campus-list">
+            <div class="campus-item"><span class="campus-item-name">El Marqués</span><span class="campus-item-nivel">Preescolar → Bachillerato</span></div>
+            <div class="campus-item"><span class="campus-item-name">La Joya</span><span class="campus-item-nivel">Preescolar → Bachillerato</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILARES -->
+<section class="pilares-section">
+  <div class="container">
+    <p class="section-eyebrow" style="color:#EA8215">¿Por qué Innova Schools?</p>
+    <h2 class="section-title">La escuela privada que forma líderes del mañana</h2>
+    <p class="section-sub">Educación integral, accesible y reconocida a nivel mundial.</p>
+    <div class="pilares-grid">
+      <div class="pilar-card"><span class="pilar-icon">🏆</span><h4>Modelo avalado por la SEP</h4><p>Currículo oficial potenciado con habilidades del siglo XXI. Referencia del Foro Económico Mundial.</p></div>
+      <div class="pilar-card"><span class="pilar-icon">🌍</span><h4>Programa bilingüe Cambridge</h4><p>Certificaciones internacionales de inglés desde preescolar hasta bachillerato.</p></div>
+      <div class="pilar-card"><span class="pilar-icon">🏫</span><h4>Instalaciones diseñadas para aprender</h4><p>Laboratorios, espacios colaborativos y tecnología integrada al modelo educativo.</p></div>
+      <div class="pilar-card"><span class="pilar-icon">💰</span><h4>Precio accesible</h4><p>Educación privada de calidad con colegiaturas competitivas y descuentos vigentes para el ciclo 26-27.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <h2 class="section-title" style="margin-bottom:40px">Lo que dicen los papás que ya se inscribieron</h2>
+    <div class="test-grid">
+      <div class="test-card"><div class="stars">★★★★★</div><p class="test-quote"><span class="quote-mark">"</span><span style="position:relative;z-index:1">Recomendaría a Innova Schools porque su sistema es distinto, veo contenta a mi hija y está aprendiendo de una forma diferente.</span></p><div class="test-author"><div class="avatar" style="background:#00659D;border-color:#00659D">AE</div><div><div style="font-size:14px;font-weight:600;color:#111827">Adriana Amparo y Enrique Vázquez</div><div style="font-size:12px;color:#9CA3AF">Papás de alumna en Primaria</div></div></div></div>
+      <div class="test-card"><div class="stars">★★★★★</div><p class="test-quote"><span class="quote-mark">"</span><span style="position:relative;z-index:1">Recomendaría a Innova por la importancia que le dan a la formación socioemocional de los niños. Es algo que no ves en otras escuelas privadas.</span></p><div class="test-author"><div class="avatar" style="background:#8DBA38;border-color:#8DBA38">LL</div><div><div style="font-size:14px;font-weight:600;color:#111827">Luis Enrique López y Laura Corrientes</div><div style="font-size:12px;color:#9CA3AF">Papás de alumno en Primaria</div></div></div></div>
+      <div class="test-card"><div class="stars">★★★★★</div><p class="test-quote"><span class="quote-mark">"</span><span style="position:relative;z-index:1">El proceso de inscripción fue muy fácil y el descuento llegó justo cuando más lo necesitábamos. Llevamos 2 años en Innova y no cambiaríamos.</span></p><div class="test-author"><div class="avatar" style="background:#EA8215;border-color:#EA8215">MG</div><div><div style="font-size:14px;font-weight:600;color:#111827">Mónica García H.</div><div style="font-size:12px;color:#9CA3AF">Mamá de alumno · Campus Ecatepec</div></div></div></div>
+    </div>
+    <div class="trust-row">
+      <div class="trust-item"><span style="font-size:24px">👥</span><div style="font-size:22px;font-weight:700;color:#111827">60K+</div><div style="font-size:12px;color:#6B7280">Alumnos egresados</div></div>
+      <div class="trust-item"><span style="font-size:24px">⭐</span><div style="font-size:22px;font-weight:700;color:#111827">4.9</div><div style="font-size:12px;color:#6B7280">Calificación promedio</div></div>
+      <div class="trust-item"><span style="font-size:24px">🏫</span><div style="font-size:22px;font-weight:700;color:#111827">12</div><div style="font-size:12px;color:#6B7280">Campus disponibles</div></div>
+      <div class="trust-item"><span style="font-size:24px">🎓</span><div style="font-size:22px;font-weight:700;color:#111827">SEP</div><div style="font-size:12px;color:#6B7280">Avalado y certificado</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FORM 2 -->
+<section class="reg-section" id="registro-form">
+  <div class="decor-tl"></div><div class="decor-br"></div>
+  <div class="reg-inner">
+    <div style="color:#fff">
+      <p style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#EA8215;margin-bottom:12px">50% OFF · Ciclo 2026-27</p>
+      <h2 style="font-size:clamp(24px,3vw,34px);font-weight:700;line-height:1.2;margin-bottom:16px">Agenda tu evaluación antes de que se agoten los lugares.</h2>
+      <p style="font-size:16px;color:rgba(255,255,255,.85);line-height:1.7;margin-bottom:28px">Solo necesitas 60 segundos. Un asesor te contacta para confirmar tu lugar y guiarte en el proceso de admisión.</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:32px">
+        <li style="display:flex;align-items:center;gap:10px"><span style="color:#8DBA38;font-size:16px;font-weight:700">✓</span><span style="font-size:15px;color:rgba(255,255,255,.9)">50% de descuento en inscripción</span></li>
+        <li style="display:flex;align-items:center;gap:10px"><span style="color:#8DBA38;font-size:16px;font-weight:700">✓</span><span style="font-size:15px;color:rgba(255,255,255,.9)">Asesor personal asignado</span></li>
+        <li style="display:flex;align-items:center;gap:10px"><span style="color:#8DBA38;font-size:16px;font-weight:700">✓</span><span style="font-size:15px;color:rgba(255,255,255,.9)">Válido para todos los campus participantes</span></li>
+        <li style="display:flex;align-items:center;gap:10px"><span style="color:#8DBA38;font-size:16px;font-weight:700">✓</span><span style="font-size:15px;color:rgba(255,255,255,.9)">Sin spam · Sin compromisos</span></li>
+      </ul>
+      <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.1);border-radius:12px;padding:12px 16px">
+        <span style="font-size:20px">⏱</span>
+        <span style="font-size:14px;font-weight:600">Quedan <span class="lugares-count">28</span> lugares disponibles con descuento</span>
+      </div>
+    </div>
+    <div class="reg-card" id="reg-form-wrap">
+      <h3>Agenda tu evaluación</h3>
+      <p style="font-size:12px;font-weight:600;color:#EA8215;text-align:center;margin-bottom:28px">⏱ Quedan <span class="lugares-count">28</span> lugares · Ciclo 26-27</p>
+      <form id="reg-form" novalidate onsubmit="submitForm(event,'reg')">
+        <div class="field"><label>Nombre completo <span class="req">*</span></label><input type="text" id="r-nombre" placeholder="Tu nombre y apellido"/><div class="err-msg" id="r-nombre-err"></div></div>
+        <div class="field"><label>Correo electrónico <span class="req">*</span></label><input type="email" id="r-email" placeholder="nombre@correo.com"/><div class="hint">Aquí te enviamos la confirmación</div><div class="err-msg" id="r-email-err"></div></div>
+        <div class="field"><label>Teléfono <span class="req">*</span></label><input type="tel" id="r-tel" placeholder="10 dígitos"/><div class="err-msg" id="r-tel-err"></div></div>
+        <div class="field"><label>Campus de interés <span class="opt">(opc.)</span></label>
+          <div class="select-wrap"><select id="r-campus"><option value="">Campus (opcional)</option><optgroup label="Estado de México"><option>Atizapán</option><option>Coacalco</option><option>Cuautitlán Izcalli</option><option>Ecatepec</option><option>Huehuetoca</option><option>Ojo de Agua / Tecámac</option><option>Tultepec</option><option>Zumpango</option><option>Chalco</option></optgroup><optgroup label="Hidalgo"><option>Tizayuca</option></optgroup><optgroup label="Querétaro"><option>El Marqués</option><option>La Joya</option></optgroup><option value="ns">Aún no lo sé</option></select><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="field"><label>¿A qué nivel ingresa tu hijo/a? <span class="req">*</span></label><div class="pills" id="r-pills"></div><div class="err-msg" id="r-niveles-err"></div></div>
+        <div class="field"><label>¿Cómo te enteraste? <span class="req">*</span></label>
+          <div class="select-wrap"><select id="r-enterado"><option value="">Selecciona</option><option>Redes sociales</option><option>WhatsApp</option><option>Recomendación de un amigo</option><option>Búsqueda en Google</option><option>Correo electrónico</option><option>Otro</option></select><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="err-msg" id="r-enterado-err"></div>
+        </div>
+        <div class="cb-row" onclick="toggleCb('r-privacy')"><div class="cb-box" id="r-privacy-box"></div><span class="cb-label">He leído y acepto el <a href="https://innovaschools.edu.mx/aviso-de-privacidad/" style="color:#00659D;font-weight:600">Aviso de Privacidad</a> <span style="color:#EA8215">*</span></span></div>
+        <div class="err-msg" id="r-privacy-err" style="margin-bottom:8px"></div>
+        <div class="cb-row" onclick="toggleCb('r-comms')"><div class="cb-box" id="r-comms-box"></div><span class="cb-label">Acepto recibir comunicaciones de Innova Schools México.</span></div>
+        <button type="submit" class="submit-btn">Quiero el 50% de descuento →</button>
+        <p class="privacy-note">🔒 Tus datos están seguros. Sin spam.<br><small>*Consulta niveles y tarjetas participantes. Sujeto a disponibilidad.</small></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="faq-inner">
+    <h2 class="section-title" style="margin-bottom:40px">Preguntas frecuentes</h2>
+    <div id="faq-list"></div>
+    <div style="text-align:center;margin-top:32px"><p style="font-size:14px;color:#9CA3AF">¿Otra pregunta? <a href="https://wa.me/5541945798" target="_blank" style="color:#25D366;font-weight:600">Escríbenos por WhatsApp →</a></p></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <img src="assets/img/logo.svg" alt="Innova Schools" style="height:36px;width:auto"/>
+    <p class="footer-text">Innova Schools México 2026&nbsp;&nbsp;|&nbsp;&nbsp;© Todos los derechos reservados.&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://innovaschools.edu.mx/aviso-de-privacidad/" class="footer-link">Aviso de privacidad</a></p>
+  </div>
+</footer>
+
+<!-- WHATSAPP -->
+<div class="wa-btn">
+  <div class="wa-tooltip">Escríbenos — respondemos al instante</div>
+  <div class="wa-wrapper">
+    <div class="wa-pulse"></div>
+    <a href="https://wa.me/5541945798" target="_blank" rel="noopener noreferrer" class="wa-link">
+      <img src="https://img.icons8.com/ios_filled/512/FFFFFF/whatsapp.png" alt="WhatsApp" style="width:32px;height:32px;object-fit:contain;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.1));"/>
+    </a>
+  </div>
+</div>
+
+<script>
+window.addEventListener('scroll',()=>{ document.getElementById('main-nav').classList.toggle('scrolled',window.scrollY>10); });
+
+function getDynamicCount(){const B=30,S=new Date('2026-03-25T15:00:00Z'),H=12,M=3;return Math.max(M,Math.round(B-(Date.now()-S.getTime())/3600000/H));}
+function updateCounts(){const c=getDynamicCount();document.querySelectorAll('.lugares-count').forEach(el=>el.textContent=c);}
+function scrollToForm(){document.getElementById('registro-form').scrollIntoView({behavior:'smooth'});}
+
+const niveles=['Preescolar','Primaria Baja','Primaria Alta','Secundaria','Bachillerato'];
+const selectedH=new Set(),selectedR=new Set();
+function buildPills(id,sel){
+  const w=document.getElementById(id);w.innerHTML='';
+  niveles.forEach(n=>{const p=document.createElement('button');p.type='button';p.className='pill'+(sel.has(n)?' checked':'');
+    p.innerHTML=(sel.has(n)?'<svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M1 6l4 4 6-6" stroke="#00659D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>':'')+n;
+    p.onclick=()=>{sel.has(n)?sel.delete(n):sel.add(n);buildPills(id,sel);};w.appendChild(p);});
+}
+const cbState={};
+function toggleCb(id){cbState[id]=!cbState[id];const b=document.getElementById(id+'-box');b.classList.toggle('checked',!!cbState[id]);b.innerHTML=cbState[id]?'<svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M1 6l4 4 6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>':'';}
+
+function submitForm(e,prefix){
+  e.preventDefault();const p=prefix==='hero'?'h':'r';const sel=prefix==='hero'?selectedH:selectedR;let valid=true;
+  const setErr=(id,msg)=>{const el=document.getElementById(p+'-'+id+'-err');if(el)el.textContent=msg;if(msg)valid=false;};
+  const nombre=document.getElementById(p+'-nombre').value.trim();
+  const email=document.getElementById(p+'-email').value.trim();
+  const tel=document.getElementById(p+'-tel').value.replace(/\s/g,'');
+  const enterado=document.getElementById(p+'-enterado').value;
+  const privacy=cbState[p+'-privacy'];
+  setErr('nombre',nombre?'':'Ingresa tu nombre completo');
+  setErr('email',/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)?'':'Correo inválido');
+  setErr('tel',/^\d{10}$/.test(tel)?'':'10 dígitos sin espacios');
+  setErr('enterado',enterado?'':'Selecciona cómo te enteraste');
+  const nErr=document.getElementById(p+'-niveles-err');if(nErr)nErr.textContent=sel.size?'':'Selecciona al menos un nivel';if(!sel.size)valid=false;
+  const pErr=document.getElementById(p+'-privacy-err');if(pErr)pErr.textContent=privacy?'':'Debes aceptar el Aviso de Privacidad';if(!privacy)valid=false;
+  if(!valid)return;
+  document.getElementById(prefix==='hero'?'hero-form-wrap':'reg-form-wrap').innerHTML=`
+    <div class="success-card">
+      <div class="success-icon"><svg width="32" height="32" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="18" fill="#8DBA38"/><path d="M10 18.5l5.5 5.5 10.5-11" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <h3 style="font-size:20px;font-weight:700;color:#111827;margin-bottom:8px">¡Tu lugar está reservado!</h3>
+      <p style="font-size:14px;color:#6B7280;line-height:1.6;margin-bottom:16px">Un asesor te contactará en menos de 24 horas para confirmar tu evaluación y el descuento del 50%.</p>
+      <div style="background:#F7F8FA;border-radius:10px;padding:12px 16px;text-align:left">
+        <p style="font-size:12px;font-weight:500;color:#374151;margin:4px 0">🏷️ Descuento: 50% en inscripción ciclo 26-27</p>
+        <p style="font-size:12px;font-weight:500;color:#374151;margin:4px 0">⏱ Respuesta en menos de 24 horas</p>
+        <p style="font-size:12px;color:#9CA3AF;margin:8px 0 0">*Consulta términos y condiciones. Sujeto a disponibilidad.</p>
+      </div>
+    </div>`;}
+
+const faqs=[
+  ['¿Cuándo vence el 50% de descuento?','El descuento es válido para las primeras 30 familias que agenden su evaluación para el ciclo 26-27. Una vez agotados los lugares, la promoción no aplica. Te recomendamos reservar tu lugar cuanto antes.'],
+  ['¿Qué niveles aplican para el descuento?','Consulta con tu asesor los niveles y campus participantes, ya que puede haber restricciones específicas. El descuento aplica sobre la cuota de inscripción, no sobre la colegiatura mensual.'],
+  ['¿Qué incluye la inscripción?','La cuota de inscripción cubre seguro escolar, tarjetones, gafetes e incorporación al sistema educativo Innova Schools.'],
+  ['¿El descuento aplica en los 3 estados?','Sí. La promoción aplica en todos los campus de Estado de México, Hidalgo y Querétaro participantes en la convocatoria 26-27. Consulta con tu asesor la disponibilidad específica de tu campus.'],
+  ['¿Cómo es el proceso de evaluación?','Una vez que registras tus datos, un asesor te contacta para agendar la evaluación de admisión. El proceso incluye: solicitud → evaluación → inscripción. Tu asesor te guía en cada paso.'],
+  ['¿Qué es el programa de referidos?','Si recomiendas Innova Schools a otro papá y su hijo se inscribe, puedes ganar hasta 12 meses de colegiatura gratis. Pregúntale a tu asesor los detalles al momento de inscribirte.'],
+];
+const fl=document.getElementById('faq-list');
+faqs.forEach(([q,a],i)=>{fl.innerHTML+=`<div class="faq-item" id="faq-${i}"><button class="faq-btn" onclick="toggleFaq(${i})"><span>${q}</span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="#C9CDD4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-answer"><div class="faq-divider"></div><p style="font-size:14px;color:#6B7280;line-height:1.7;margin:0">${a}</p></div></div>`;});
+let openFaq=null;
+function toggleFaq(i){if(openFaq!==null)document.getElementById('faq-'+openFaq).classList.remove('open');openFaq=openFaq===i?null:i;if(openFaq!==null)document.getElementById('faq-'+openFaq).classList.add('open');}
+
+document.addEventListener('DOMContentLoaded',()=>{buildPills('h-pills',selectedH);buildPills('r-pills',selectedR);updateCounts();});
+</script>
+</body>
+</html>
