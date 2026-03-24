@@ -5,7 +5,8 @@
       "Bash(where node:*)",
       "Bash(where npx:*)",
       "Bash(where python:*)",
-      "Bash(where python3:*)"
+      "Bash(where python3:*)",
+      "Bash(ls *.html)"
     ]
   }
 }
