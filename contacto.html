@@ -43,7 +43,7 @@ button { font-family: 'Montserrat', sans-serif; cursor: pointer; }
 .mobile-sub a:hover { color: #00659D; border-left-color: #00659D; }
 .mobile-cta-wrap { padding: 16px 24px; border-top: 1px solid #EAEDF0; }
 .mobile-cta-btn { display: block; background: #EA8215; color: #fff; text-align: center; padding: 12px; border-radius: 999px; font-size: 14px; font-weight: 700; }
-@media (min-width: 900px) { .nav-links { display: flex; } .hamburger { display: none; } }
+@media (min-width: 900px) { .nav-links { display: flex; } .hamburger { display: none; } .search-btn-mobile { display: none !important; } }
 
 /* ── HERO ── */
 .hero { background: linear-gradient(135deg, #0D1B2A 0%, #00659D 100%); padding: 64px 0 72px; position: relative; overflow: hidden; }
@@ -165,15 +165,19 @@ button { font-family: 'Montserrat', sans-serif; cursor: pointer; }
 .footer-link { color: #62668a; transition: color 150ms; }
 .footer-link:hover { color: #00659d; }
 
-/* ── WHATSAPP ── */
-.wa-btn { position: fixed; bottom: 24px; right: 20px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-end; }
-.wa-wrapper { position: relative; width: 56px; height: 56px; }
-.wa-pulse { position: absolute; inset: -6px; border-radius: 50%; background: rgba(37,211,102,.3); animation: wa-pulse 2.5s ease-out infinite; pointer-events: none; }
-.wa-link { width: 100%; height: 100%; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(37,211,102,.45); transition: transform 150ms; position: relative; z-index: 1; }
-.wa-link:hover { transform: scale(1.08); }
-.wa-tooltip { position: absolute; bottom: calc(100% + 12px); right: 0; background: #111827; color: #fff; font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 999px; white-space: nowrap; box-shadow: 0 2px 8px rgba(0,0,0,.2); opacity: 0; visibility: hidden; transition: opacity 200ms, visibility 200ms; }
-.wa-btn:hover .wa-tooltip { opacity: 1; visibility: visible; }
-@keyframes wa-pulse { 0% { transform: scale(1); opacity: .7; } 100% { transform: scale(1.6); opacity: 0; } }
+/* ── FLOAT NAV (desktop) ── */
+.float-nav { position: fixed; right: 16px; top: 50%; transform: translateY(-50%); z-index: 9998; display: flex; flex-direction: column; gap: 6px; background: rgba(13,27,42,0.60); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.18); border-radius: 20px; padding: 10px 8px; box-shadow: 0 8px 32px rgba(0,0,0,0.25); }
+.float-nav-item { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 14px; border-radius: 12px; text-decoration: none; font-size: 10px; font-weight: 700; color: #fff; transition: background 150ms, transform 100ms; white-space: nowrap; min-width: 64px; }
+.float-nav-item:hover { background: rgba(255,255,255,0.15); transform: scale(1.05); }
+.float-nav-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 2px; }
+@media (max-width: 899px) { .float-nav { display: none; } }
+
+/* ── BOTTOM NAV (mobile) ── */
+.bottom-nav { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 9998; background: rgba(255,255,255,0.72); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-top: 1px solid rgba(0,0,0,0.08); box-shadow: 0 -4px 24px rgba(0,0,0,0.10); padding: 8px 4px calc(8px + env(safe-area-inset-bottom, 0px)); justify-content: space-around; align-items: center; }
+.bottom-nav-item { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 6px 10px; border-radius: 12px; text-decoration: none; font-size: 10px; font-weight: 700; color: #374151; transition: background 150ms; flex: 1; max-width: 88px; }
+.bottom-nav-item:active { background: rgba(0,0,0,0.06); }
+.bottom-nav-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 1px; }
+@media (max-width: 899px) { .bottom-nav { display: flex; } body { padding-bottom: 76px; } }
 
 /* ── UTILS ── */
 .section-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; text-align: center; margin-bottom: 8px; }
@@ -242,11 +246,15 @@ button { font-family: 'Montserrat', sans-serif; cursor: pointer; }
         </div>
       </div>
       <a href="https://innovaschools.edu.mx/promociones-descuentos/" class="nav-btn" style="font-weight:600;color:#374151">Promociones</a>
+      <button onclick="toggleSearch()" aria-label="Buscar" style="background:none;border:none;cursor:pointer;padding:8px;border-radius:8px;display:flex;align-items:center;color:#374151;transition:color 150ms" onmouseover="this.style.color='#00659D'" onmouseout="this.style.color='#374151'"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
       <a href="https://innovaschools.edu.mx/contacto/" class="nav-btn nav-cta">Inscríbete</a>
     </div>
-    <button class="hamburger" id="hamburger-btn" onclick="toggleMobile()" aria-label="Menú">
-      <span></span><span></span><span></span>
-    </button>
+    <div style="display:flex;align-items:center;gap:0">
+      <button onclick="toggleSearch()" aria-label="Buscar" class="search-btn-mobile" style="background:none;border:none;cursor:pointer;padding:8px;border-radius:8px;display:flex;align-items:center;color:#374151"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
+      <button class="hamburger" id="hamburger-btn" onclick="toggleMobile()" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
   <div class="mobile-menu" id="mobile-menu">
     <button class="mobile-item-btn" onclick="toggleMobileSub('sub-acerca',this)">Acerca de Innova <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -261,6 +269,17 @@ button { font-family: 'Montserrat', sans-serif; cursor: pointer; }
     <div class="mobile-cta-wrap"><a href="#form-hero" class="mobile-cta-btn" onclick="document.getElementById('mobile-menu').classList.remove('open')">Inscríbete ahora →</a></div>
   </div>
 </nav>
+
+<!-- ── SEARCH OVERLAY ── -->
+<div id="search-overlay" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(13,27,42,0.75);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);align-items:flex-start;justify-content:center;padding-top:80px" onclick="if(event.target===this)toggleSearch()">
+  <button onclick="toggleSearch()" aria-label="Cerrar" style="position:fixed;top:16px;right:16px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:50%;width:40px;height:40px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#fff"><svg width="16" height="16" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  <div style="width:100%;max-width:600px;padding:0 24px">
+    <form onsubmit="submitSearch(event)" style="display:flex;gap:10px">
+      <input id="search-input" type="text" placeholder="Buscar en Innova Schools…" style="flex:1;height:52px;border:none;border-radius:999px;padding:0 22px;font-size:16px;font-family:inherit;outline:none;box-shadow:0 8px 32px rgba(0,0,0,0.3)"/>
+      <button type="submit" style="height:52px;width:52px;border-radius:50%;background:#00659D;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,101,157,0.4)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
+    </form>
+  </div>
+</div>
 
 <!-- ── HERO ── -->
 <section class="hero">
@@ -604,16 +623,45 @@ button { font-family: 'Montserrat', sans-serif; cursor: pointer; }
   </div>
 </footer>
 
-<!-- ── WHATSAPP ── -->
-<div class="wa-btn">
-  <div class="wa-tooltip">Escríbenos — respondemos al instante</div>
-  <div class="wa-wrapper">
-    <div class="wa-pulse"></div>
-    <a href="https://wa.me/5541945798" target="_blank" rel="noopener noreferrer" class="wa-link">
-      <img src="https://img.icons8.com/ios_filled/512/FFFFFF/whatsapp.png" alt="WhatsApp" style="width:32px;height:32px;object-fit:contain;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.1));"/>
-    </a>
-  </div>
+<!-- ── FLOAT NAV (desktop right) ── -->
+<div class="float-nav">
+  <a href="https://wa.me/5541945798" target="_blank" rel="noopener noreferrer" class="float-nav-item">
+    <div class="float-nav-icon" style="background:#25D366"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.4 2.4C6.45 2.4 2.4 6.45 2.4 11.4c0 1.61.42 3.13 1.16 4.44L2.4 20.4l4.56-1.16a9 9 0 0 0 4.44 1.16c4.95 0 9-4.05 9-9s-4.05-9-9-9z"/></svg></div>
+    <span>WhatsApp</span>
+  </a>
+  <a href="contacto.html" class="float-nav-item">
+    <div class="float-nav-icon" style="background:#00659D"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+    <span>Contacto</span>
+  </a>
+  <a href="calculadora.html" class="float-nav-item">
+    <div class="float-nav-icon" style="background:#EA8215"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="14" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="14" y1="18" x2="16" y2="18"/></svg></div>
+    <span>Colegiatura</span>
+  </a>
+  <a href="opendays.html" class="float-nav-item">
+    <div class="float-nav-icon" style="background:#8DBA38"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L8.5 8.5 2 9.27l5 4.87-1.18 6.88L12 17.77l6.18 3.25L17 14.14l5-4.87-6.5-.77z"/></svg></div>
+    <span>Open Days</span>
+  </a>
 </div>
+
+<!-- ── BOTTOM NAV (mobile) ── -->
+<nav class="bottom-nav">
+  <a href="https://wa.me/5541945798" target="_blank" rel="noopener noreferrer" class="bottom-nav-item">
+    <div class="bottom-nav-icon" style="background:#25D366"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.4 2.4C6.45 2.4 2.4 6.45 2.4 11.4c0 1.61.42 3.13 1.16 4.44L2.4 20.4l4.56-1.16a9 9 0 0 0 4.44 1.16c4.95 0 9-4.05 9-9s-4.05-9-9-9z"/></svg></div>
+    <span>WhatsApp</span>
+  </a>
+  <a href="contacto.html" class="bottom-nav-item">
+    <div class="bottom-nav-icon" style="background:#00659D"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+    <span>Contacto</span>
+  </a>
+  <a href="calculadora.html" class="bottom-nav-item">
+    <div class="bottom-nav-icon" style="background:#EA8215"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="14" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="14" y1="18" x2="16" y2="18"/></svg></div>
+    <span>Colegiatura</span>
+  </a>
+  <a href="opendays.html" class="bottom-nav-item">
+    <div class="bottom-nav-icon" style="background:#8DBA38"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L8.5 8.5 2 9.27l5 4.87-1.18 6.88L12 17.77l6.18 3.25L17 14.14l5-4.87-6.5-.77z"/></svg></div>
+    <span>Open Days</span>
+  </a>
+</nav>
 
 <script>
 // NAV
@@ -622,6 +670,8 @@ window.addEventListener('scroll', () => { document.getElementById('main-nav').cl
 function toggleMobile() {
   document.getElementById('mobile-menu').classList.toggle('open');
 }
+function toggleSearch() { const o = document.getElementById('search-overlay'); const open = o.style.display === 'flex'; o.style.display = open ? 'none' : 'flex'; if (!open) setTimeout(() => document.getElementById('search-input').focus(), 50); }
+function submitSearch(e) { e.preventDefault(); const q = document.getElementById('search-input').value.trim(); if(q) window.location.href = 'https://innovaschools.edu.mx/?s=' + encodeURIComponent(q); }
 function toggleMobileSub(id, btn) {
   const sub = document.getElementById(id);
   const isOpen = sub.classList.contains('open');

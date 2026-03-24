@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calculadora de Colegiatura · Innova Schools México</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: 'Montserrat', sans-serif; background: #fff; color: #111827; }
+img { display: block; max-width: 100%; }
+a { text-decoration: none; }
+button { font-family: 'Montserrat', sans-serif; cursor: pointer; }
+
+/* ── NAV (mismo que contacto) ── */
+.nav { position: sticky; top: 0; z-index: 1000; background: #fff; border-bottom: 1px solid #EAEDF0; transition: box-shadow 200ms; }
+.nav.scrolled { box-shadow: 0 2px 12px rgba(0,0,0,.08); }
+.nav-inner { max-width: 1140px; margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.nav-logo { height: 36px; width: auto; }
+.nav-links { display: none; align-items: center; gap: 2px; }
+.nav-item { position: relative; }
+.nav-btn { display: flex; align-items: center; gap: 5px; padding: 8px 12px; background: none; border: none; font-size: 13px; font-weight: 600; color: #374151; border-radius: 8px; transition: color 150ms, background 150ms; white-space: nowrap; }
+.nav-btn:hover { color: #00659D; background: #F0F7FF; }
+.nav-btn svg { transition: transform 200ms; flex-shrink: 0; }
+.nav-item:hover .nav-btn svg { transform: rotate(180deg); }
+.dropdown { display: none; position: absolute; top: calc(100% + 8px); left: 0; background: #fff; border: 1px solid #EAEDF0; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,.12); min-width: 220px; padding: 8px 0; z-index: 2000; }
+.dropdown::before { content: ''; position: absolute; top: -6px; left: 20px; width: 12px; height: 12px; background: #fff; border: 1px solid #EAEDF0; border-right: none; border-bottom: none; transform: rotate(45deg); border-radius: 2px 0 0 0; }
+.nav-item:hover .dropdown { display: block; }
+.dropdown a { display: block; padding: 9px 20px; font-size: 13px; font-weight: 500; color: #374151; border-left: 3px solid transparent; transition: background 120ms, color 120ms, border-color 120ms; }
+.dropdown a:hover { background: #F0F7FF; color: #00659D; border-left-color: #00659D; }
+.nav-cta { background: #EA8215; color: #fff !important; border-radius: 999px; padding: 8px 18px !important; font-weight: 700 !important; }
+.nav-cta:hover { background: #C4690D !important; color: #fff !important; }
+.hamburger { display: flex; flex-direction: column; gap: 5px; background: none; border: none; padding: 8px; border-radius: 8px; }
+.hamburger span { width: 22px; height: 2px; background: #374151; border-radius: 2px; transition: all 200ms; display: block; }
+.mobile-menu { display: none; background: #fff; border-top: 1px solid #EAEDF0; max-height: 70vh; overflow-y: auto; }
+.mobile-menu.open { display: block; }
+.mobile-item-btn { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 12px 24px; background: none; border: none; font-size: 14px; font-weight: 600; color: #111827; text-align: left; }
+.mobile-item-btn.active { color: #00659D; }
+.mobile-sub { display: none; background: #F7F8FA; border-top: 1px solid #EAEDF0; border-bottom: 1px solid #EAEDF0; }
+.mobile-sub.open { display: block; }
+.mobile-sub a { display: block; padding: 10px 36px; font-size: 13px; color: #374151; border-left: 3px solid transparent; }
+.mobile-sub a:hover { color: #00659D; border-left-color: #00659D; }
+.mobile-cta-wrap { padding: 16px 24px; border-top: 1px solid #EAEDF0; }
+.mobile-cta-btn { display: block; background: #EA8215; color: #fff; text-align: center; padding: 12px; border-radius: 999px; font-size: 14px; font-weight: 700; }
+@media (min-width: 900px) { .nav-links { display: flex; } .hamburger { display: none; } .search-btn-mobile { display: none !important; } }
+
+/* ── HERO ── */
+.hero { background: linear-gradient(135deg, #0D1B2A 0%, #00659D 100%); padding: 0; position: relative; overflow: hidden; min-height: 420px; display: flex; align-items: stretch; }
+.hero-decor-tr { position: absolute; top: -80px; right: -80px; width: 280px; height: 280px; border-radius: 0 0 0 100%; background: #8DBA38; opacity: .10; pointer-events: none; }
+.hero-decor-bl { position: absolute; bottom: -40px; left: -40px; width: 160px; height: 160px; border-radius: 50%; background: #EA8215; opacity: .09; pointer-events: none; }
+.hero-inner { max-width: 1140px; margin: 0 auto; padding: 56px 24px; display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center; width: 100%; position: relative; z-index: 1; }
+.hero-badge { display: inline-flex; align-items: center; gap: 6px; border-radius: 999px; padding: 5px 14px; font-size: 12px; font-weight: 700; background: #EDF6D9; color: #6A9028; border: 1px solid #8DBA38; margin-bottom: 16px; }
+.hero h1 { font-size: clamp(24px, 4vw, 40px); font-weight: 900; line-height: 1.1; letter-spacing: -.02em; color: #fff; margin-bottom: 12px; }
+.hero h1 span { color: #EA8215; }
+.hero .sub { font-size: 15px; color: rgba(255,255,255,.82); line-height: 1.7; margin-bottom: 24px; max-width: 520px; }
+.hero-features { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 0; }
+.hero-feature { display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: rgba(255,255,255,.9); }
+.hero-img { display: none; border-radius: 16px; overflow: hidden; position: relative; }
+.hero-img img { width: 100%; height: 360px; object-fit: cover; display: block; }
+.hero-img-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(13,27,42,.8) 0%, transparent 100%); padding: 24px; }
+.hero-img-overlay p { font-size: 14px; font-weight: 600; color: #fff; }
+.hero-img-overlay span { font-size: 12px; color: rgba(255,255,255,.7); }
+@media (min-width: 900px) { .hero-inner { grid-template-columns: 55% 45%; } .hero-img { display: block; } }
+
+/* ── REFERIDOS BANNER ── */
+.referidos-banner { background: linear-gradient(90deg, #8DBA38 0%, #6A9028 100%); padding: 16px 24px; }
+.referidos-inner { max-width: 1140px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.referidos-text { font-size: 14px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 10px; }
+.referidos-text span { font-size: 20px; }
+.referidos-cta { background: #fff; color: #6A9028; font-size: 13px; font-weight: 800; padding: 7px 18px; border-radius: 999px; transition: transform 150ms; white-space: nowrap; }
+.referidos-cta:hover { transform: scale(1.03); }
+
+/* ── CALCULADORA ── */
+.calc-section { background: #F7F8FA; padding: 64px 0; }
+.calc-inner { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+.calc-header { text-align: center; margin-bottom: 40px; }
+.section-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; text-align: center; margin-bottom: 8px; }
+.section-title { font-size: clamp(22px,3vw,32px); font-weight: 700; color: #111827; text-align: center; line-height: 1.25; margin-bottom: 12px; }
+.section-sub { font-size: 15px; color: #6B7280; text-align: center; line-height: 1.6; }
+
+/* Stepper */
+.stepper { display: flex; align-items: center; justify-content: center; gap: 0; margin-bottom: 40px; }
+.step { display: flex; flex-direction: column; align-items: center; gap: 6px; position: relative; }
+.step-circle { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; border: 2px solid #EAEDF0; background: #fff; color: #9CA3AF; transition: all 250ms; }
+.step.active .step-circle { background: #EA8215; border-color: #EA8215; color: #fff; box-shadow: 0 4px 12px rgba(234,130,21,.3); }
+.step.done .step-circle { background: #8DBA38; border-color: #8DBA38; color: #fff; }
+.step-label { font-size: 11px; font-weight: 600; color: #9CA3AF; white-space: nowrap; }
+.step.active .step-label { color: #EA8215; }
+.step.done .step-label { color: #8DBA38; }
+.step-line { width: 60px; height: 2px; background: #EAEDF0; margin: 0 4px; margin-bottom: 20px; transition: background 250ms; }
+.step-line.done { background: #8DBA38; }
+@media (max-width: 480px) { .step-line { width: 32px; } .step-label { font-size: 10px; } }
+
+/* Calc card */
+.calc-card { background: #fff; border-radius: 20px; padding: 36px 32px; box-shadow: 0 4px 24px rgba(0,0,0,.08); }
+@media (max-width: 480px) { .calc-card { padding: 24px 18px; } }
+
+.step-panel { display: none; }
+.step-panel.active { display: block; }
+
+.step-title { font-size: 18px; font-weight: 700; color: #111827; margin-bottom: 6px; }
+.step-desc { font-size: 13px; color: #6B7280; margin-bottom: 28px; line-height: 1.6; }
+
+/* Form fields */
+.field { margin-bottom: 16px; }
+.field label { display: block; font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 5px; }
+.field label .req { color: #EA8215; }
+.field input, .field select { width: 100%; min-height: 50px; padding: 12px 16px; border: 2px solid #E2E8F0; border-radius: 12px; font-size: 14px; font-family: 'Montserrat', sans-serif; color: #1F2937; background: #fff; outline: none; transition: border-color 150ms, box-shadow 150ms; appearance: none; }
+.field input:focus, .field select:focus { border-color: #EA8215; box-shadow: 0 0 0 3px rgba(234,130,21,.10); }
+.err-msg { font-size: 11px; color: #D93025; margin-top: 3px; min-height: 16px; }
+.field .hint { font-size: 11px; color: #9CA3AF; margin-top: 3px; }
+.select-wrap { position: relative; }
+.select-wrap svg { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); pointer-events: none; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 540px) { .field-row { grid-template-columns: 1fr; } }
+
+/* Checkbox */
+.cb-row { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; margin-bottom: 12px; }
+.cb-box { width: 20px; height: 20px; min-width: 20px; border-radius: 5px; border: 2px solid #E2E8F0; background: #fff; display: flex; align-items: center; justify-content: center; margin-top: 1px; transition: all 150ms; }
+.cb-box.checked { border-color: #EA8215; background: #EA8215; }
+.cb-label { font-size: 12px; color: #374151; line-height: 1.5; }
+
+/* Hijos selector */
+.hijos-selector { display: flex; gap: 12px; margin-bottom: 28px; }
+.hijo-btn { flex: 1; padding: 14px 10px; border: 2px solid #E2E8F0; border-radius: 12px; background: #fff; font-size: 18px; font-weight: 800; color: #374151; text-align: center; cursor: pointer; transition: all 150ms; }
+.hijo-btn small { display: block; font-size: 10px; font-weight: 600; color: #9CA3AF; margin-top: 2px; }
+.hijo-btn.active { border-color: #EA8215; background: #FEF0E0; color: #EA8215; }
+.hijo-btn.active small { color: #EA8215; }
+
+/* Nivel chips por hijo */
+.nivel-section { background: #F7F8FA; border-radius: 12px; padding: 18px 20px; margin-bottom: 16px; }
+.nivel-section h4 { font-size: 13px; font-weight: 700; color: #374151; margin-bottom: 12px; }
+.nivel-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.nivel-chip { padding: 7px 14px; border: 2px solid #E2E8F0; border-radius: 999px; font-size: 12px; font-weight: 600; color: #374151; cursor: pointer; transition: all 150ms; background: #fff; }
+.nivel-chip:hover { border-color: #00659D; color: #00659D; }
+.nivel-chip.active { border-color: #00659D; background: #E8F4FA; color: #00659D; }
+
+/* Botones navegación */
+.step-actions { display: flex; gap: 12px; margin-top: 28px; }
+.btn-next { flex: 1; background: #EA8215; color: #fff; border: none; border-radius: 999px; padding: 14px 24px; font-size: 15px; font-weight: 700; min-height: 52px; box-shadow: 0 6px 20px rgba(234,130,21,.35); transition: background 200ms, transform 100ms; }
+.btn-next:hover { background: #C4690D; transform: translateY(-1px); }
+.btn-back { background: none; border: 2px solid #E2E8F0; color: #374151; border-radius: 999px; padding: 14px 20px; font-size: 14px; font-weight: 600; min-height: 52px; transition: all 150ms; }
+.btn-back:hover { border-color: #374151; }
+
+/* Resultado */
+.result-panel { display: none; }
+.result-panel.active { display: block; }
+.result-header { text-align: center; margin-bottom: 32px; }
+.result-header .check { width: 64px; height: 64px; border-radius: 50%; background: #EDF6D9; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+.result-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 28px; }
+.result-card { border: 1.5px solid #EAEDF0; border-radius: 14px; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.result-card.highlight { border-color: #EA8215; background: #FEF0E0; }
+.result-label { font-size: 13px; font-weight: 600; color: #374151; }
+.result-label small { display: block; font-size: 11px; font-weight: 400; color: #9CA3AF; margin-top: 2px; }
+.result-price { font-size: 20px; font-weight: 900; color: #111827; white-space: nowrap; }
+.result-card.highlight .result-price { color: #EA8215; }
+.result-discount-badge { display: inline-flex; align-items: center; gap: 5px; background: #8DBA38; color: #fff; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 999px; margin-top: 4px; }
+.result-disclaimer { font-size: 11px; color: #9CA3AF; text-align: center; margin-bottom: 24px; line-height: 1.6; }
+.result-ctas { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.cta-wa { background: #25D366; color: #fff; border: none; border-radius: 999px; padding: 14px 20px; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background 150ms; }
+.cta-wa:hover { background: #1da851; }
+.cta-openday { background: #00659D; color: #fff; border: none; border-radius: 999px; padding: 14px 20px; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background 150ms; }
+.cta-openday:hover { background: #004A7C; }
+.btn-recalc { display: block; width: 100%; background: none; border: none; color: #9CA3AF; font-size: 13px; font-weight: 500; text-align: center; margin-top: 16px; cursor: pointer; }
+.btn-recalc:hover { color: #374151; }
+@media (max-width: 480px) { .result-ctas { grid-template-columns: 1fr; } }
+
+/* ── CÓMO FUNCIONA ── */
+.como-section { background: #fff; padding: 72px 0; }
+.pasos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 20px; margin-top: 40px; }
+.paso-card { text-align: center; padding: 28px 20px; border: 1.5px solid #EAEDF0; border-radius: 16px; transition: box-shadow 200ms, transform 150ms; }
+.paso-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,.08); transform: translateY(-2px); }
+.paso-num { width: 48px; height: 48px; border-radius: 50%; background: #EA8215; color: #fff; font-size: 20px; font-weight: 900; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; box-shadow: 0 4px 12px rgba(234,130,21,.3); }
+.paso-card h4 { font-size: 14px; font-weight: 700; color: #111827; margin-bottom: 8px; }
+.paso-card p { font-size: 12px; color: #6B7280; line-height: 1.6; }
+
+/* ── FOTO ESTUDIANTES ── */
+.students-section { background: #0D1B2A; padding: 72px 0; overflow: hidden; }
+.students-inner { max-width: 1140px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
+.students-photos { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.student-photo { border-radius: 14px; overflow: hidden; position: relative; }
+.student-photo img { width: 100%; height: 180px; object-fit: cover; display: block; filter: brightness(.85); transition: filter 250ms; }
+.student-photo:hover img { filter: brightness(1); }
+.student-photo-main { border-radius: 14px; overflow: hidden; grid-column: span 1; }
+.student-photo-main img { width: 100%; height: 380px; object-fit: cover; display: block; }
+@media (min-width: 900px) { .students-inner { grid-template-columns: 1fr 1fr; } }
+
+/* ── TESTIMONIALS ── */
+.testimonials { background: #F7F8FA; padding: 72px 0; }
+.test-grid { display: grid; grid-template-columns: 1fr; gap: 24px; margin-bottom: 48px; }
+.test-card { border: 1px solid #EAEDF0; border-left: 4px solid #8DBA38; border-radius: 16px; padding: 24px; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,.06); transition: box-shadow 200ms, transform 150ms; }
+.test-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,.12); transform: translateY(-2px); }
+.stars { color: #EA8215; font-size: 16px; margin-bottom: 12px; letter-spacing: 2px; }
+.test-quote { font-size: 14px; color: #374151; font-style: italic; line-height: 1.6; margin-bottom: 16px; }
+.test-author { display: flex; align-items: center; gap: 12px; }
+.avatar { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: #fff; flex-shrink: 0; border: 2px solid; }
+.trust-row { background: #fff; border-radius: 20px; padding: 28px 32px; display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; }
+.trust-item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; }
+@media (min-width: 768px) { .test-grid { grid-template-columns: repeat(3,1fr); } .trust-row { grid-template-columns: repeat(4,1fr); } }
+
+/* ── FAQ ── */
+.faq { background: #fff; padding: 72px 0; }
+.faq-inner { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+.faq-item { background: #fff; border: 1px solid #EAEDF0; border-left: 4px solid transparent; border-radius: 12px; overflow: hidden; margin-bottom: 12px; transition: border-color 200ms; }
+.faq-item.open { border-color: #EA8215; border-left-color: #EA8215; box-shadow: 0 4px 12px rgba(234,130,21,.08); }
+.faq-btn { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; background: none; border: none; font-size: 15px; font-weight: 600; color: #111827; text-align: left; gap: 16px; font-family: 'Montserrat', sans-serif; }
+.faq-btn svg { flex-shrink: 0; transition: transform 250ms; }
+.faq-item.open .faq-btn svg { transform: rotate(180deg); }
+.faq-answer { display: none; padding: 0 24px 20px; }
+.faq-item.open .faq-answer { display: block; }
+.faq-divider { height: 1px; background: #EAEDF0; margin-bottom: 16px; }
+
+/* ── FOOTER ── */
+.footer { background: #E7E8F1; padding: 32px 0; }
+.footer-inner { max-width: 1140px; margin: 0 auto; padding: 0 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; }
+.footer-text { font-size: 12px; color: #62668a; }
+.footer-link { color: #62668a; } .footer-link:hover { color: #00659d; }
+
+/* ── FLOAT NAV (desktop) ── */
+.float-nav { position: fixed; right: 16px; top: 50%; transform: translateY(-50%); z-index: 9998; display: flex; flex-direction: column; gap: 6px; background: rgba(13,27,42,0.60); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.18); border-radius: 20px; padding: 10px 8px; box-shadow: 0 8px 32px rgba(0,0,0,0.25); }
+.float-nav-item { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 14px; border-radius: 12px; text-decoration: none; font-size: 10px; font-weight: 700; color: #fff; transition: background 150ms, transform 100ms; white-space: nowrap; min-width: 64px; }
+.float-nav-item:hover { background: rgba(255,255,255,0.15); transform: scale(1.05); }
+.float-nav-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 2px; }
+@media (max-width: 899px) { .float-nav { display: none; } }
+
+/* ── BOTTOM NAV (mobile) ── */
+.bottom-nav { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 9998; background: rgba(255,255,255,0.72); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-top: 1px solid rgba(0,0,0,0.08); box-shadow: 0 -4px 24px rgba(0,0,0,0.10); padding: 8px 4px calc(8px + env(safe-area-inset-bottom, 0px)); justify-content: space-around; align-items: center; }
+.bottom-nav-item { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 6px 10px; border-radius: 12px; text-decoration: none; font-size: 10px; font-weight: 700; color: #374151; transition: background 150ms; flex: 1; max-width: 88px; }
+.bottom-nav-item:active { background: rgba(0,0,0,0.06); }
+.bottom-nav-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 1px; }
+@media (max-width: 899px) { .bottom-nav { display: flex; } body { padding-bottom: 76px; } }
+
+.container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="nav" id="main-nav">
+  <div class="nav-inner">
+    <a href="https://innovaschools.edu.mx"><img src="assets/img/logo.svg" alt="Innova Schools" class="nav-logo" style="height:52px"/></a>
+    <div class="nav-links">
+      <div class="nav-item">
+        <button class="nav-btn">Acerca de Innova <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="dropdown">
+          <a href="https://innovaschools.edu.mx/acerca-de-innova-schools-mexico/">¿Quiénes somos?</a>
+          <a href="https://innovaschools.edu.mx/preguntas-frecuentes/">Preguntas frecuentes</a>
+          <a href="https://innovaschools.edu.mx/blog/">Blog</a>
+          <a href="https://innovaschools.edu.mx/galeria/">Galería</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button class="nav-btn">Modelo Educativo <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="dropdown">
+          <a href="https://innovaschools.edu.mx/modelo-educativo/">Modelo educativo</a>
+          <a href="https://innovaschools.edu.mx/hagamoslo-mejor/">Hagámoslo mejor</a>
+          <a href="https://innovaschools.edu.mx/global-english-program/">Programa bilingüe</a>
+          <a href="https://innovaschools.edu.mx/talleres-extracurriculares/">Club Innova Schools</a>
+          <a href="https://innovaschools.edu.mx/nuestro-equipo-academico/">Equipo académico</a>
+          <a href="https://innovaschools.edu.mx/perfil-del-estudiante-innova/">Perfil del estudiante</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button class="nav-btn">Niveles Educativos <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="dropdown">
+          <a href="https://innovaschools.edu.mx/niveles-educativos/preescolar/">Preescolar</a>
+          <a href="https://innovaschools.edu.mx/niveles-educativos/primaria-baja/">Primaria baja</a>
+          <a href="https://innovaschools.edu.mx/niveles-educativos/primaria-alta/">Primaria alta</a>
+          <a href="https://innovaschools.edu.mx/niveles-educativos/secundaria/">Secundaria</a>
+          <a href="https://innovaschools.edu.mx/niveles-educativos/bachillerato/">Bachillerato</a>
+          <a href="https://innovaschools.edu.mx/niveles-educativos/">Todos los niveles</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button class="nav-btn">Nuestros Campus <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="dropdown" style="min-width:260px">
+          <a href="https://innovaschools.edu.mx/campus/atizapan/">Atizapán</a>
+          <a href="https://innovaschools.edu.mx/campus/coacalco/">Coacalco</a>
+          <a href="https://innovaschools.edu.mx/campus/cuautitlan-izcalli/">Cuautitlán Izcalli</a>
+          <a href="https://innovaschools.edu.mx/campus/ecatepec/">Ecatepec</a>
+          <a href="https://innovaschools.edu.mx/campus/campus-huehuetoca/">Huehuetoca</a>
+          <a href="https://innovaschools.edu.mx/campus/ojo-de-agua/">Ojo de Agua</a>
+          <a href="https://innovaschools.edu.mx/campus/tultepec/">Tultepec</a>
+          <a href="https://innovaschools.edu.mx/campus/zumpango/">Zumpango</a>
+          <a href="https://innovaschools.edu.mx/campus/campus-chalco/">Chalco</a>
+          <a href="https://innovaschools.edu.mx/campus/tizayuca/">Tizayuca (Hidalgo)</a>
+          <a href="https://innovaschools.edu.mx/campus/queretaro/">Querétaro</a>
+          <a href="https://innovaschools.edu.mx/campus/" style="font-weight:700;color:#00659D">Ver todos los campus →</a>
+        </div>
+      </div>
+      <a href="https://innovaschools.edu.mx/promociones-descuentos/" class="nav-btn" style="font-weight:600;color:#374151">Promociones</a>
+      <button onclick="toggleSearch()" aria-label="Buscar" style="background:none;border:none;cursor:pointer;padding:8px;border-radius:8px;display:flex;align-items:center;color:#374151;transition:color 150ms" onmouseover="this.style.color='#00659D'" onmouseout="this.style.color='#374151'"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
+      <a href="https://innovaschools.edu.mx/contacto/" class="nav-btn nav-cta">Inscríbete</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:0">
+      <button onclick="toggleSearch()" aria-label="Buscar" class="search-btn-mobile" style="background:none;border:none;cursor:pointer;padding:8px;border-radius:8px;display:flex;align-items:center;color:#374151"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
+      <button class="hamburger" onclick="toggleMobile()" aria-label="Menú"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-item-btn" onclick="toggleMobileSub('sub-acerca',this)">Acerca de Innova <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="mobile-sub" id="sub-acerca"><a href="https://innovaschools.edu.mx/acerca-de-innova-schools-mexico/">¿Quiénes somos?</a><a href="https://innovaschools.edu.mx/preguntas-frecuentes/">Preguntas frecuentes</a><a href="https://innovaschools.edu.mx/blog/">Blog</a></div>
+    <button class="mobile-item-btn" onclick="toggleMobileSub('sub-modelo',this)">Modelo Educativo <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="mobile-sub" id="sub-modelo"><a href="https://innovaschools.edu.mx/modelo-educativo/">Modelo educativo</a><a href="https://innovaschools.edu.mx/global-english-program/">Programa bilingüe</a><a href="https://innovaschools.edu.mx/talleres-extracurriculares/">Club Innova</a></div>
+    <button class="mobile-item-btn" onclick="toggleMobileSub('sub-niveles',this)">Niveles Educativos <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="mobile-sub" id="sub-niveles"><a href="https://innovaschools.edu.mx/niveles-educativos/preescolar/">Preescolar</a><a href="https://innovaschools.edu.mx/niveles-educativos/primaria-baja/">Primaria baja</a><a href="https://innovaschools.edu.mx/niveles-educativos/secundaria/">Secundaria</a><a href="https://innovaschools.edu.mx/niveles-educativos/bachillerato/">Bachillerato</a></div>
+    <button class="mobile-item-btn" onclick="toggleMobileSub('sub-campus',this)">Nuestros Campus <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="mobile-sub" id="sub-campus"><a href="https://innovaschools.edu.mx/campus/atizapan/">Atizapán</a><a href="https://innovaschools.edu.mx/campus/coacalco/">Coacalco</a><a href="https://innovaschools.edu.mx/campus/ecatepec/">Ecatepec</a><a href="https://innovaschools.edu.mx/campus/">Ver todos →</a></div>
+    <div class="mobile-cta-wrap"><a href="https://innovaschools.edu.mx/contacto/" class="mobile-cta-btn">Inscríbete ahora →</a></div>
+  </div>
+</nav>
+
+<!-- ── SEARCH OVERLAY ── -->
+<div id="search-overlay" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(13,27,42,0.75);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);align-items:flex-start;justify-content:center;padding-top:80px" onclick="if(event.target===this)toggleSearch()">
+  <button onclick="toggleSearch()" aria-label="Cerrar" style="position:fixed;top:16px;right:16px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:50%;width:40px;height:40px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#fff"><svg width="16" height="16" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  <div style="width:100%;max-width:600px;padding:0 24px">
+    <form onsubmit="submitSearch(event)" style="display:flex;gap:10px">
+      <input id="search-input" type="text" placeholder="Buscar en Innova Schools…" style="flex:1;height:52px;border:none;border-radius:999px;padding:0 22px;font-size:16px;font-family:inherit;outline:none;box-shadow:0 8px 32px rgba(0,0,0,0.3)"/>
+      <button type="submit" style="height:52px;width:52px;border-radius:50%;background:#00659D;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,101,157,0.4)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
+    </form>
+  </div>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-decor-tr"></div>
+  <div class="hero-decor-bl"></div>
+  <div class="hero-inner">
+    <div>
+      <img src="assets/img/logo.svg" alt="Innova Schools" style="height:56px;width:auto;margin-bottom:20px;filter:brightness(0) invert(1)"/>
+      <div class="hero-badge">🧮 Herramienta gratuita</div>
+      <h1>Calcula la colegiatura de tu hijo <span>en 60 segundos.</span></h1>
+      <p class="sub">Obtén un estimado de colegiatura e inscripción por nivel y campus — con los descuentos vigentes para el ciclo 2026-27. Sin compromisos, sin datos de tarjeta.</p>
+      <div class="hero-features">
+        <div class="hero-feature"><svg width="16" height="16" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#8DBA38"/><path d="M5.5 10.5L8.5 13.5L14.5 7.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Estimado por nivel y campus</div>
+        <div class="hero-feature"><svg width="16" height="16" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#8DBA38"/><path d="M5.5 10.5L8.5 13.5L14.5 7.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Descuentos 26-27 incluidos</div>
+        <div class="hero-feature"><svg width="16" height="16" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#8DBA38"/><path d="M5.5 10.5L8.5 13.5L14.5 7.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Hasta 3 hijos simultáneamente</div>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="https://innovaschools.edu.mx/wp-content/uploads/2024/10/innova-schools-calculadora-colegiatura.png" alt="Calculadora de Colegiatura Innova Schools" loading="lazy"/>
+      <div class="hero-img-overlay">
+        <p>Más de 60,000 alumnos egresados</p>
+        <span>12 campus en Edomex, Hidalgo y Querétaro</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── REFERIDOS BANNER ── -->
+<div class="referidos-banner">
+  <div class="referidos-inner">
+    <div class="referidos-text">
+      <span>🎁</span>
+      <span>¿Ya conoces nuestro programa de referidos? <strong>Gana hasta 1 año de colegiatura gratis</strong> por recomendar Innova Schools a un amigo.</span>
+    </div>
+    <a href="https://wa.me/5541945798?text=Hola, me interesa conocer el programa de referidos de Innova Schools" target="_blank" class="referidos-cta">Conocer más →</a>
+  </div>
+</div>
+
+<!-- ── CALCULADORA ── -->
+<section class="calc-section" id="calculadora">
+  <div class="calc-inner">
+    <div class="calc-header">
+      <p class="section-eyebrow" style="color:#EA8215">Calculadora de colegiatura</p>
+      <h2 class="section-title">¿Cuánto cuesta Innova Schools?</h2>
+      <p class="section-sub">Completa los 3 pasos y obtén tu estimado personalizado al instante.</p>
+    </div>
+
+    <!-- Stepper -->
+    <div class="stepper" id="stepper">
+      <div class="step active" id="step-ind-1">
+        <div class="step-circle">1</div>
+        <div class="step-label">Tus datos</div>
+      </div>
+      <div class="step-line" id="line-1"></div>
+      <div class="step" id="step-ind-2">
+        <div class="step-circle">2</div>
+        <div class="step-label">Selección</div>
+      </div>
+      <div class="step-line" id="line-2"></div>
+      <div class="step" id="step-ind-3">
+        <div class="step-circle">3</div>
+        <div class="step-label">Tu estimado</div>
+      </div>
+    </div>
+
+    <!-- CARD -->
+    <div class="calc-card">
+
+      <!-- PASO 1 -->
+      <div class="step-panel active" id="panel-1">
+        <h3 class="step-title">Paso 1 — Tus datos personales</h3>
+        <p class="step-desc">Solo para enviarte tu cotización personalizada. Tus datos están seguros.</p>
+        <div class="field-row">
+          <div class="field"><label>Nombre completo <span class="req">*</span></label><input type="text" id="p1-nombre" placeholder="Tu nombre y apellido"/><div class="err-msg" id="err-nombre"></div></div>
+          <div class="field"><label>Correo electrónico <span class="req">*</span></label><input type="email" id="p1-email" placeholder="nombre@correo.com"/><div class="err-msg" id="err-email"></div></div>
+        </div>
+        <div class="field"><label>Teléfono celular <span class="req">*</span></label><input type="tel" id="p1-tel" placeholder="10 dígitos"/><div class="hint">Te enviamos el resumen por WhatsApp</div><div class="err-msg" id="err-tel"></div></div>
+        <div class="cb-row" onclick="toggleCb('privacy')"><div class="cb-box" id="privacy-box"></div><span class="cb-label">He leído y acepto el <a href="https://innovaschools.edu.mx/aviso-de-privacidad/" style="color:#EA8215;font-weight:600">Aviso de Privacidad</a> de Innova Schools México <span style="color:#EA8215">*</span></span></div>
+        <div class="err-msg" id="err-privacy"></div>
+        <div class="cb-row" onclick="toggleCb('comms')"><div class="cb-box" id="comms-box"></div><span class="cb-label">Acepto recibir comunicaciones de Innova Schools México.</span></div>
+        <div class="step-actions">
+          <button class="btn-next" onclick="goStep(2)">Continuar → Selección de campus</button>
+        </div>
+      </div>
+
+      <!-- PASO 2 -->
+      <div class="step-panel" id="panel-2">
+        <h3 class="step-title">Paso 2 — Campus e hijos</h3>
+        <p class="step-desc">Selecciona el campus de tu interés y el nivel educativo de cada hijo.</p>
+        <div class="field"><label>Campus de interés <span class="req">*</span></label>
+          <div class="select-wrap">
+            <select id="p2-campus">
+              <option value="">Selecciona un campus</option>
+              <optgroup label="Estado de México"><option value="edomex">Atizapán</option><option value="edomex">Coacalco</option><option value="edomex">Cuautitlán Izcalli</option><option value="edomex">Ecatepec</option><option value="edomex">Huehuetoca</option><option value="edomex">Ojo de Agua / Tecámac</option><option value="edomex">Tultepec</option><option value="edomex">Zumpango</option><option value="edomex">Chalco</option></optgroup>
+              <optgroup label="Hidalgo"><option value="hgo">Tizayuca</option></optgroup>
+              <optgroup label="Querétaro"><option value="qro">El Marqués</option><option value="qro">La Joya</option></optgroup>
+            </select>
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="err-msg" id="err-campus"></div>
+        </div>
+        <div class="field" style="margin-bottom:8px"><label>¿Cuántos hijos vas a inscribir? <span class="req">*</span></label></div>
+        <div class="hijos-selector" id="hijos-selector">
+          <button class="hijo-btn active" onclick="setHijos(1,this)">1<small>hijo</small></button>
+          <button class="hijo-btn" onclick="setHijos(2,this)">2<small>hijos</small></button>
+          <button class="hijo-btn" onclick="setHijos(3,this)">3<small>hijos</small></button>
+        </div>
+        <div id="niveles-container"></div>
+        <div class="err-msg" id="err-niveles"></div>
+        <div class="step-actions">
+          <button class="btn-back" onclick="goStep(1)">← Atrás</button>
+          <button class="btn-next" onclick="calcular()">Calcular mi colegiatura →</button>
+        </div>
+      </div>
+
+      <!-- PASO 3 - Resultado -->
+      <div class="step-panel" id="panel-3">
+        <div class="result-header">
+          <div class="check"><svg width="32" height="32" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="18" fill="#8DBA38"/><path d="M10 18.5l5.5 5.5 10.5-11" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3 style="font-size:20px;font-weight:700;color:#111827;margin-bottom:6px" id="result-title">Tu estimado de colegiatura</h3>
+          <p style="font-size:13px;color:#6B7280" id="result-subtitle">Campus seleccionado · Ciclo 2026-27</p>
+        </div>
+        <div class="result-grid" id="result-grid"></div>
+        <p class="result-disclaimer">* Este cálculo es un estimado orientativo. Los precios reales pueden variar según el campus, nivel y promociones vigentes. Un asesor te proporcionará la cotización exacta.</p>
+        <div class="result-ctas">
+          <a href="https://wa.me/5541945798?text=Hola, usé la calculadora de colegiatura y me gustaría más información" target="_blank" class="cta-wa">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Hablar con asesor
+          </a>
+          <a href="https://innovaschools.edu.mx/contacto/" class="cta-openday">
+            <svg width="16" height="16" fill="none" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="rgba(255,255,255,.25)"/><path d="M5 10h10M13 7l3 3-3 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Iniciar inscripción
+          </a>
+        </div>
+        <button class="btn-recalc" onclick="resetCalc()">↺ Hacer otro cálculo</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CÓMO FUNCIONA ── -->
+<section class="como-section">
+  <div class="container">
+    <p class="section-eyebrow" style="color:#EA8215">¿Cómo funciona?</p>
+    <h2 class="section-title">3 pasos para conocer el costo</h2>
+    <p class="section-sub">Rápido, sin compromisos y con los descuentos reales del ciclo 2026-27.</p>
+    <div class="pasos-grid">
+      <div class="paso-card"><div class="paso-num">1</div><h4>Ingresa tus datos</h4><p>Solo nombre, correo y teléfono. Sin datos de tarjeta ni compromisos de pago.</p></div>
+      <div class="paso-card"><div class="paso-num">2</div><h4>Selecciona campus y nivel</h4><p>Elige el campus más cercano y el nivel educativo de cada hijo (hasta 3).</p></div>
+      <div class="paso-card"><div class="paso-num">3</div><h4>Recibe tu estimado</h4><p>Ve el costo aproximado de colegiatura e inscripción con descuento incluido.</p></div>
+      <div class="paso-card"><div class="paso-num" style="background:#00659D;box-shadow:0 4px 12px rgba(0,101,157,.3)">+</div><h4>Habla con un asesor</h4><p>Para una cotización exacta y personalizada, nuestro equipo te contacta en menos de 24h.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ESTUDIANTES ── -->
+<section class="students-section">
+  <div class="students-inner">
+    <div>
+      <p style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#EA8215;margin-bottom:12px">La comunidad Innova</p>
+      <h2 style="font-size:clamp(22px,3vw,34px);font-weight:700;color:#fff;line-height:1.25;margin-bottom:16px">Más de 60,000 estudiantes han pasado por nuestras aulas.</h2>
+      <p style="font-size:15px;color:rgba(255,255,255,.75);line-height:1.7;margin-bottom:28px">Cada campus Innova está diseñado para potenciar el aprendizaje activo, la creatividad y las habilidades que el mundo de hoy demanda.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:16px">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:18px">🏆</div>
+          <div><div style="font-size:13px;font-weight:700;color:#fff">Modelo SEP</div><div style="font-size:11px;color:rgba(255,255,255,.6)">Certificado</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:18px">🌍</div>
+          <div><div style="font-size:13px;font-weight:700;color:#fff">Cambridge</div><div style="font-size:11px;color:rgba(255,255,255,.6)">Bilingüe</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:18px">📍</div>
+          <div><div style="font-size:13px;font-weight:700;color:#fff">12 Campus</div><div style="font-size:11px;color:rgba(255,255,255,.6)">3 estados</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="students-photos">
+      <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=400&h=200&fit=crop&auto=format" alt="Estudiantes en clase" style="border-radius:14px;height:180px;object-fit:cover;width:100%;filter:brightness(.85)" loading="lazy"/>
+      <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=400&h=200&fit=crop&auto=format" alt="Salón Innova" style="border-radius:14px;height:180px;object-fit:cover;width:100%;filter:brightness(.85)" loading="lazy"/>
+      <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?w=400&h=200&fit=crop&auto=format" alt="Estudiante aprendiendo" style="border-radius:14px;height:180px;object-fit:cover;width:100%;filter:brightness(.85)" loading="lazy"/>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="testimonials">
+  <div class="container">
+    <h2 class="section-title" style="margin-bottom:40px">Lo que dicen los papás que ya calcularon y se inscribieron</h2>
+    <div class="test-grid">
+      <div class="test-card"><div class="stars">★★★★★</div><p class="test-quote">La calculadora me dio una idea clara del costo antes de llamarles. Sin sorpresas, el asesor confirmó el precio y me explicó el descuento de hermanos que aplica por tener dos hijos.</p><div class="test-author"><div class="avatar" style="background:#00659D;border-color:#00659D">MR</div><div><div style="font-size:14px;font-weight:600;color:#111827">María Rodríguez</div><div style="font-size:12px;color:#9CA3AF">Mamá de 2 alumnos · Campus Coacalco</div></div></div></div>
+      <div class="test-card"><div class="stars">★★★★★</div><p class="test-quote">No esperaba que fuera tan accesible. Calculé para primaria y secundaria y el costo es muy razonable comparado con otras escuelas privadas de la zona.</p><div class="test-author"><div class="avatar" style="background:#8DBA38;border-color:#8DBA38">FP</div><div><div style="font-size:14px;font-weight:600;color:#111827">Fernando Pérez A.</div><div style="font-size:12px;color:#9CA3AF">Papá · Campus Cuautitlán Izcalli</div></div></div></div>
+      <div class="test-card"><div class="stars">★★★★★</div><p class="test-quote">La herramienta es muy fácil. En 2 minutos ya tenía el estimado y en menos de una hora me llamó el asesor para agendar la visita al campus. Muy ágil todo.</p><div class="test-author"><div class="avatar" style="background:#EA8215;border-color:#EA8215">LC</div><div><div style="font-size:14px;font-weight:600;color:#111827">Laura Contreras</div><div style="font-size:12px;color:#9CA3AF">Mamá · Campus Ecatepec</div></div></div></div>
+    </div>
+    <div class="trust-row">
+      <div class="trust-item"><span style="font-size:24px">🧮</span><div style="font-size:22px;font-weight:700;color:#111827">3K+</div><div style="font-size:12px;color:#6B7280">Cálculos realizados</div></div>
+      <div class="trust-item"><span style="font-size:24px">⭐</span><div style="font-size:22px;font-weight:700;color:#111827">4.9</div><div style="font-size:12px;color:#6B7280">Satisfacción del asesor</div></div>
+      <div class="trust-item"><span style="font-size:24px">⚡</span><div style="font-size:22px;font-weight:700;color:#111827">&lt;24h</div><div style="font-size:12px;color:#6B7280">Tiempo de respuesta</div></div>
+      <div class="trust-item"><span style="font-size:24px">💰</span><div style="font-size:22px;font-weight:700;color:#111827">50%</div><div style="font-size:12px;color:#6B7280">Dto. inscripción vigente</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="faq">
+  <div class="faq-inner">
+    <h2 class="section-title" style="margin-bottom:40px">Preguntas frecuentes</h2>
+    <div id="faq-list"></div>
+    <div style="text-align:center;margin-top:32px"><p style="font-size:14px;color:#9CA3AF">¿Otra pregunta? <a href="https://wa.me/5541945798" target="_blank" style="color:#25D366;font-weight:600">Escríbenos por WhatsApp →</a></p></div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <img src="assets/img/logo.svg" alt="Innova Schools" style="height:36px;width:auto"/>
+    <p class="footer-text">Innova Schools México 2026&nbsp;&nbsp;|&nbsp;&nbsp;© Todos los derechos reservados.&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://innovaschools.edu.mx/aviso-de-privacidad/" class="footer-link">Aviso de privacidad</a></p>
+  </div>
+</footer>
+
+<!-- ── FLOAT NAV (desktop right) ── -->
+<div class="float-nav">
+  <a href="https://wa.me/5541945798" target="_blank" rel="noopener noreferrer" class="float-nav-item">
+    <div class="float-nav-icon" style="background:#25D366"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.4 2.4C6.45 2.4 2.4 6.45 2.4 11.4c0 1.61.42 3.13 1.16 4.44L2.4 20.4l4.56-1.16a9 9 0 0 0 4.44 1.16c4.95 0 9-4.05 9-9s-4.05-9-9-9z"/></svg></div>
+    <span>WhatsApp</span>
+  </a>
+  <a href="contacto.html" class="float-nav-item">
+    <div class="float-nav-icon" style="background:#00659D"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+    <span>Contacto</span>
+  </a>
+  <a href="calculadora.html" class="float-nav-item">
+    <div class="float-nav-icon" style="background:#EA8215"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="14" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="14" y1="18" x2="16" y2="18"/></svg></div>
+    <span>Colegiatura</span>
+  </a>
+  <a href="opendays.html" class="float-nav-item">
+    <div class="float-nav-icon" style="background:#8DBA38"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L8.5 8.5 2 9.27l5 4.87-1.18 6.88L12 17.77l6.18 3.25L17 14.14l5-4.87-6.5-.77z"/></svg></div>
+    <span>Open Days</span>
+  </a>
+</div>
+
+<!-- ── BOTTOM NAV (mobile) ── -->
+<nav class="bottom-nav">
+  <a href="https://wa.me/5541945798" target="_blank" rel="noopener noreferrer" class="bottom-nav-item">
+    <div class="bottom-nav-icon" style="background:#25D366"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.4 2.4C6.45 2.4 2.4 6.45 2.4 11.4c0 1.61.42 3.13 1.16 4.44L2.4 20.4l4.56-1.16a9 9 0 0 0 4.44 1.16c4.95 0 9-4.05 9-9s-4.05-9-9-9z"/></svg></div>
+    <span>WhatsApp</span>
+  </a>
+  <a href="contacto.html" class="bottom-nav-item">
+    <div class="bottom-nav-icon" style="background:#00659D"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+    <span>Contacto</span>
+  </a>
+  <a href="calculadora.html" class="bottom-nav-item">
+    <div class="bottom-nav-icon" style="background:#EA8215"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="14" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="14" y1="18" x2="16" y2="18"/></svg></div>
+    <span>Colegiatura</span>
+  </a>
+  <a href="opendays.html" class="bottom-nav-item">
+    <div class="bottom-nav-icon" style="background:#8DBA38"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L8.5 8.5 2 9.27l5 4.87-1.18 6.88L12 17.77l6.18 3.25L17 14.14l5-4.87-6.5-.77z"/></svg></div>
+    <span>Open Days</span>
+  </a>
+</nav>
+
+<script>
+// ── NAV
+window.addEventListener('scroll', () => { document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 10); });
+function toggleMobile() { document.getElementById('mobile-menu').classList.toggle('open'); }
+function toggleSearch() { const o = document.getElementById('search-overlay'); const open = o.style.display === 'flex'; o.style.display = open ? 'none' : 'flex'; if (!open) setTimeout(() => document.getElementById('search-input').focus(), 50); }
+function submitSearch(e) { e.preventDefault(); const q = document.getElementById('search-input').value.trim(); if(q) window.location.href = 'https://innovaschools.edu.mx/?s=' + encodeURIComponent(q); }
+function toggleMobileSub(id, btn) {
+  const s = document.getElementById(id), isOpen = s.classList.contains('open');
+  document.querySelectorAll('.mobile-sub.open').forEach(x => x.classList.remove('open'));
+  document.querySelectorAll('.mobile-item-btn.active').forEach(x => x.classList.remove('active'));
+  if (!isOpen) { s.classList.add('open'); btn.classList.add('active'); }
+}
+
+// ── CHECKBOX
+const cbState = {};
+function toggleCb(id) {
+  cbState[id] = !cbState[id];
+  const b = document.getElementById(id + '-box');
+  b.classList.toggle('checked', !!cbState[id]);
+  b.innerHTML = cbState[id] ? '<svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M1 6l4 4 6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' : '';
+}
+
+// ── HIJOS
+let numHijos = 1;
+const nivelesSeleccionados = {};
+const nivelesOpts = ['Preescolar', 'Primaria', 'Secundaria', 'Bachillerato'];
+
+function setHijos(n, btn) {
+  numHijos = n;
+  document.querySelectorAll('.hijo-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderNiveles();
+}
+
+function renderNiveles() {
+  const c = document.getElementById('niveles-container');
+  c.innerHTML = '';
+  for (let i = 1; i <= numHijos; i++) {
+    const div = document.createElement('div');
+    div.className = 'nivel-section';
+    div.innerHTML = `<h4>Hijo ${i} — ¿Qué nivel educativo?</h4><div class="nivel-chips" id="chips-${i}"></div>`;
+    c.appendChild(div);
+    nivelesOpts.forEach(n => {
+      const chip = document.createElement('button');
+      chip.type = 'button';
+      chip.className = 'nivel-chip' + (nivelesSeleccionados[i] === n ? ' active' : '');
+      chip.textContent = n;
+      chip.onclick = () => {
+        nivelesSeleccionados[i] = n;
+        document.querySelectorAll(`#chips-${i} .nivel-chip`).forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+      };
+      document.getElementById('chips-' + i).appendChild(chip);
+    });
+  }
+}
+
+// ── PRECIOS (estimados orientativos por nivel)
+const precios = {
+  'Preescolar':   { colegiatura: 1850, inscripcion: 4200 },
+  'Primaria':     { colegiatura: 2100, inscripcion: 4800 },
+  'Secundaria':   { colegiatura: 2500, inscripcion: 5400 },
+  'Bachillerato': { colegiatura: 2800, inscripcion: 6200 },
+};
+const descuentoInscripcion = 0.50; // 50% descuento vigente
+
+// ── STEPPER
+function goStep(n) {
+  if (n === 2) {
+    // Validar paso 1
+    const nombre = document.getElementById('p1-nombre').value.trim();
+    const email  = document.getElementById('p1-email').value.trim();
+    const tel    = document.getElementById('p1-tel').value.replace(/\s/g,'');
+    const priv   = cbState['privacy'];
+    let ok = true;
+    const se = (id, msg) => { document.getElementById(id).textContent = msg; if (msg) ok = false; };
+    se('err-nombre', nombre ? '' : 'Ingresa tu nombre completo');
+    se('err-email',  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? '' : 'Correo inválido');
+    se('err-tel',    /^\d{10}$/.test(tel) ? '' : '10 dígitos sin espacios');
+    document.getElementById('err-privacy').textContent = priv ? '' : 'Debes aceptar el Aviso de Privacidad';
+    if (!priv) ok = false;
+    if (!ok) return;
+  }
+  document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-' + n).classList.add('active');
+  updateStepper(n);
+  document.getElementById('calculadora').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function updateStepper(active) {
+  for (let i = 1; i <= 3; i++) {
+    const ind = document.getElementById('step-ind-' + i);
+    ind.classList.remove('active', 'done');
+    if (i < active) ind.classList.add('done');
+    else if (i === active) ind.classList.add('active');
+  }
+  for (let i = 1; i <= 2; i++) {
+    const line = document.getElementById('line-' + i);
+    line.classList.toggle('done', i < active);
+  }
+}
+
+function calcular() {
+  const campus = document.getElementById('p2-campus').value;
+  if (!campus) { document.getElementById('err-campus').textContent = 'Selecciona un campus'; return; }
+  let allSet = true;
+  for (let i = 1; i <= numHijos; i++) { if (!nivelesSeleccionados[i]) { allSet = false; break; } }
+  if (!allSet) { document.getElementById('err-niveles').textContent = 'Selecciona el nivel de cada hijo'; return; }
+  document.getElementById('err-campus').textContent = '';
+  document.getElementById('err-niveles').textContent = '';
+
+  // Calcular
+  const campusName = document.getElementById('p2-campus').options[document.getElementById('p2-campus').selectedIndex].text;
+  document.getElementById('result-subtitle').textContent = `Campus ${campusName} · Ciclo 2026-27`;
+
+  let totalColegiatura = 0, totalInscripcionLista = 0, totalInscripcionDesc = 0;
+  const grid = document.getElementById('result-grid');
+  grid.innerHTML = '';
+
+  for (let i = 1; i <= numHijos; i++) {
+    const nivel = nivelesSeleccionados[i];
+    const p = precios[nivel];
+    const descInsc = Math.round(p.inscripcion * descuentoInscripcion);
+    totalColegiatura += p.colegiatura;
+    totalInscripcionLista += p.inscripcion;
+    totalInscripcionDesc += descInsc;
+
+    grid.innerHTML += `
+      <div class="result-card">
+        <div class="result-label">Hijo ${i} · ${nivel}<small>Colegiatura mensual estimada</small></div>
+        <div class="result-price">$${p.colegiatura.toLocaleString('es-MX')}</div>
+      </div>
+      <div class="result-card highlight">
+        <div class="result-label">Inscripción · ${nivel}<small>Con descuento vigente 26-27<div class="result-discount-badge">50% OFF</div></small></div>
+        <div class="result-price">$${descInsc.toLocaleString('es-MX')}</div>
+      </div>`;
+  }
+
+  if (numHijos > 1) {
+    grid.innerHTML += `
+      <div class="result-card" style="border-color:#00659D;background:#E8F4FA">
+        <div class="result-label">Total colegiatura mensual<small>Suma de ${numHijos} hijos</small></div>
+        <div class="result-price" style="color:#00659D">$${totalColegiatura.toLocaleString('es-MX')}</div>
+      </div>
+      <div class="result-card" style="border-color:#00659D;background:#E8F4FA">
+        <div class="result-label">Total inscripción con descuento<small>Ahorro: $${(totalInscripcionLista - totalInscripcionDesc).toLocaleString('es-MX')}</small></div>
+        <div class="result-price" style="color:#00659D">$${totalInscripcionDesc.toLocaleString('es-MX')}</div>
+      </div>`;
+  }
+
+  document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-3').classList.add('active');
+  updateStepper(3);
+  document.getElementById('calculadora').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function resetCalc() {
+  nivelesSeleccionados[1] = null; nivelesSeleccionados[2] = null; nivelesSeleccionados[3] = null;
+  document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-1').classList.add('active');
+  updateStepper(1);
+  document.getElementById('calculadora').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ── FAQ
+const faqs = [
+  ['¿El cálculo es una cotización oficial?', 'No. La calculadora muestra un estimado orientativo basado en rangos de precios por nivel. La cotización exacta y personalizada te la proporciona un asesor Innova, quien también te informará sobre descuentos específicos disponibles en tu campus.'],
+  ['¿Qué incluye la colegiatura?', 'La colegiatura mensual cubre el servicio educativo completo. La cuota de inscripción incluye seguro escolar, tarjetones, gafetes e incorporación al sistema.'],
+  ['¿Hay descuentos para hermanos?', 'Sí. Innova Schools cuenta con descuentos especiales por inscripción de hermanos según el orden de edad. Tu asesor te explicará el esquema aplicable a tu familia.'],
+  ['¿Qué ciclo cubre este estimado?', 'El cálculo aplica para el ciclo escolar 2026-2027. Los precios y descuentos están sujetos a cambios. Consulta con tu asesor para la vigencia exacta de cada promoción.'],
+  ['¿Cuándo me contacta el asesor?', 'En menos de 24 horas hábiles tras enviar tu cálculo. Si prefieres atención inmediata, puedes escribirnos directamente por WhatsApp al 55 4194 5798.'],
+  ['¿Qué es el programa de referidos?', 'Si recomiendas Innova Schools a un amigo o familiar y su hijo se inscribe, puedes ganar hasta 12 meses de colegiatura gratis. Pregúntale a tu asesor los detalles.'],
+];
+const fl = document.getElementById('faq-list');
+faqs.forEach(([q,a],i) => {
+  fl.innerHTML += `<div class="faq-item" id="faq-${i}"><button class="faq-btn" onclick="toggleFaq(${i})"><span>${q}</span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="#C9CDD4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-answer"><div class="faq-divider"></div><p style="font-size:14px;color:#6B7280;line-height:1.7;margin:0">${a}</p></div></div>`;
+});
+let openFaq = null;
+function toggleFaq(i) { if (openFaq!==null) document.getElementById('faq-'+openFaq).classList.remove('open'); openFaq=openFaq===i?null:i; if(openFaq!==null)document.getElementById('faq-'+openFaq).classList.add('open'); }
+
+// ── INIT
+document.addEventListener('DOMContentLoaded', () => { setHijos(1, document.querySelector('.hijo-btn')); });
+</script>
+</body>
+</html>
