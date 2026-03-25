@@ -64,12 +64,17 @@ button { font-family: 'Montserrat', sans-serif; cursor: pointer; }
 @media (min-width: 900px) { .hero-inner { grid-template-columns: 55% 45%; } .hero-img { display: block; } }
 
 /* ── REFERIDOS BANNER ── */
-.referidos-banner { background: linear-gradient(90deg, #8DBA38 0%, #6A9028 100%); padding: 16px 24px; }
-.referidos-inner { max-width: 1140px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-.referidos-text { font-size: 14px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 10px; }
-.referidos-text span { font-size: 20px; }
-.referidos-cta { background: #fff; color: #6A9028; font-size: 13px; font-weight: 800; padding: 7px 18px; border-radius: 999px; transition: transform 150ms; white-space: nowrap; }
+.referidos-banner { background: linear-gradient(90deg, #8DBA38 0%, #6A9028 100%); padding: 18px 24px; }
+.referidos-inner { max-width: 1140px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.referidos-text { font-size: 14px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 10px; flex: 1; }
+.referidos-text span:first-child { font-size: 22px; flex-shrink: 0; }
+.referidos-cta { background: #fff; color: #6A9028; font-size: 13px; font-weight: 800; padding: 9px 22px; border-radius: 999px; transition: transform 150ms; white-space: nowrap; flex-shrink: 0; text-decoration: none; display: inline-block; }
 .referidos-cta:hover { transform: scale(1.03); }
+@media (max-width: 600px) {
+  .referidos-banner { padding: 20px 16px; }
+  .referidos-inner { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .referidos-cta { align-self: stretch; text-align: center; padding: 11px 22px; font-size: 14px; }
+}
 
 /* ── CALCULADORA ── */
 .calc-section { background: #F7F8FA; padding: 64px 0; }
