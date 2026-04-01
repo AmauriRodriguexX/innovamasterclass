@@ -98,10 +98,11 @@ button { font-family: 'Montserrat', sans-serif; cursor: pointer; }
 .recognition { background: #fff; padding: 36px 24px; border-bottom: 1px solid #EAEDF0; }
 .recognition-inner { max-width: 1140px; margin: 0 auto; }
 .logos { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 12px 20px; margin-top: 20px; }
-.logo-card { background: #00659D; border-radius: 20px; padding: 18px 24px; display: flex; align-items: center; justify-content: center; width: 150px; height: 86px; flex-shrink: 0; transition: transform 150ms, box-shadow 150ms; }
+.logo-card { background: #00659D; border-radius: 20px; padding: 14px 18px; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 160px; flex-shrink: 0; transition: transform 150ms, box-shadow 150ms; }
 .logo-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,101,157,.35); }
-.logo-card img { max-width: 100%; max-height: 50px; object-fit: contain; filter: brightness(0) invert(1); }
-@media (max-width: 600px) { .logo-card { width: 120px; height: 70px; } }
+.logo-card img { max-width: 100%; max-height: 48px; width: auto; height: auto; object-fit: contain; filter: brightness(0) invert(1); }
+.logo-quote { font-size: 10px; color: rgba(255,255,255,.7); text-align: center; line-height: 1.4; margin: 8px 0 0; font-style: italic; }
+@media (max-width: 600px) { .logo-card { width: 130px; padding: 12px 14px; } }
 
 /* WHY SECTION */
 .why-section { background: #F7F8FA; padding: 72px 0; }
@@ -115,15 +116,31 @@ button { font-family: 'Montserrat', sans-serif; cursor: pointer; }
 /* CAMPUS GRID */
 .campus-section { background: #fff; padding: 72px 0; }
 .campus-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 16px; margin-top: 40px; }
-.campus-card { border: 1.5px solid #EAEDF0; border-radius: 14px; padding: 20px 22px; transition: all 150ms; display: flex; flex-direction: column; gap: 8px; }
+.campus-state-header { grid-column: 1 / -1; display: flex; align-items: center; gap: 12px; padding: 8px 0 12px; border-bottom: 2px solid #EAEDF0; margin-top: 16px; }
+.campus-state-header:first-child { margin-top: 0; }
+.campus-state-header .state-icon { width: 36px; height: 36px; background: #E8F4FA; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.campus-state-header .state-name { font-size: 15px; font-weight: 800; color: #111827; }
+.campus-state-header .state-count { font-size: 12px; color: #9CA3AF; font-weight: 500; }
+.campus-card { border: 1.5px solid #EAEDF0; border-radius: 14px; padding: 0; overflow: hidden; transition: all 150ms; display: flex; flex-direction: column; }
 .campus-card:hover { border-color: #EA8215; box-shadow: 0 6px 20px rgba(234,130,21,.10); }
+.campus-card:hover .campus-card-img img { transform: scale(1.05); }
+.campus-card-img { height: 110px; overflow: hidden; flex-shrink: 0; }
+.campus-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 300ms ease; }
+.campus-card-body { padding: 14px 16px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
 .campus-estado { font-size: 10px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: #9CA3AF; }
 .campus-nombre { font-size: 16px; font-weight: 800; color: #111827; }
 .campus-direccion { font-size: 12px; color: #6B7280; line-height: 1.5; }
-.campus-niveles { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; }
+.campus-niveles { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 2px; }
 .nivel-tag { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 999px; background: #F0F7FF; color: #00659D; }
-.campus-wa { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; background: #25D366; color: #fff; font-size: 12px; font-weight: 700; padding: 7px 14px; border-radius: 999px; align-self: flex-start; transition: background 150ms; }
+.campus-wa { display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; background: #25D366; color: #fff; font-size: 12px; font-weight: 700; padding: 7px 14px; border-radius: 999px; align-self: flex-start; transition: background 150ms; }
 .campus-wa:hover { background: #1da851; }
+
+/* TOUR VIRTUAL BANNER */
+.tour-banner { background: linear-gradient(135deg, #00659D, #004d78); padding: 40px 0; }
+.tour-banner-inner { max-width: 1140px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.tour-cta-btn { display: inline-flex; align-items: center; gap: 10px; background: #EA8215; color: #fff; font-size: 15px; font-weight: 700; padding: 14px 26px; border-radius: 999px; text-decoration: none; white-space: nowrap; transition: background 150ms; flex-shrink: 0; }
+.tour-cta-btn:hover { background: #d4731a; }
+@media (max-width: 640px) { .campus-grid { grid-template-columns: 1fr 1fr; gap: 12px; } .campus-card-img { height: 90px; } .tour-banner-inner { flex-direction: column; text-align: center; } .tour-cta-btn { width: 100%; justify-content: center; } }
 
 /* TESTIMONIALS */
 .testimonials { background: #F7F8FA; padding: 72px 0; }
@@ -181,3 +198,23 @@ button { font-family: 'Montserrat', sans-serif; cursor: pointer; }
 .decor-br { position: absolute; bottom: -50px; right: -50px; width: 180px; height: 180px; border-radius: 50%; background: #EA8215; opacity: .12; pointer-events: none; }
 .btn-orange { background: #EA8215; color: #fff; border: none; border-radius: 999px; padding: 14px 24px; font-size: 15px; font-weight: 700; min-height: 52px; box-shadow: 0 4px 16px rgba(234,130,21,.25); transition: background 200ms; font-family: 'Montserrat', sans-serif; cursor: pointer; }
 .btn-orange:hover { background: #C4690D; }
+
+/* CAMPUS SLIDER */
+.camp-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:32px}
+.camp-tab{display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:12px 18px;border-radius:12px;border:2px solid #EAEDF0;background:#fff;cursor:pointer;transition:all 150ms;min-width:140px}
+.camp-tab:hover{border-color:#00659D}
+.camp-tab.active{border-color:#00659D;background:#EBF4FA}
+.camp-tab-dot{font-size:14px}
+.camp-tab-name{font-size:13px;font-weight:700;color:#111827}
+.camp-tab-count{font-size:11px;color:#6B7280;font-weight:500}
+.camp-tab.active .camp-tab-name{color:#00659D}
+.camp-card{border:1.5px solid #EAEDF0;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;flex-shrink:0;transition:border-color 150ms,box-shadow 150ms}
+.camp-card:hover{border-color:#EA8215;box-shadow:0 6px 20px rgba(234,130,21,.10)}
+.camp-card-img{height:110px;overflow:hidden;flex-shrink:0}
+.camp-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 300ms}
+.camp-card:hover .camp-card-img img{transform:scale(1.05)}
+.camp-card-body{padding:16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.camp-nombre{font-size:15px;font-weight:800;color:#111827}
+.camp-dir{font-size:12px;color:#6B7280;line-height:1.45}
+.camp-niveles{display:flex;flex-wrap:wrap;gap:4px}
+@media(max-width:600px){.camp-tab{min-width:0;flex:1}.camp-tab-name{font-size:12px}}

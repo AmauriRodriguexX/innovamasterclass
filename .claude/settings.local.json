@@ -6,7 +6,17 @@
       "Bash(where npx:*)",
       "Bash(where python:*)",
       "Bash(where python3:*)",
-      "Bash(ls *.html)"
+      "Bash(ls *.html)",
+      "Bash(py --version)",
+      "Bash(where py:*)",
+      "Bash(python -:*)",
+      "Bash(python update_pages.py)",
+      "Bash(python build_campus_slider.py)",
+      "Bash(rm build_campus_slider.py)",
+      "Bash(rm -f build_campus_slider.py _camp_css_to_add.txt)",
+      "Bash(python -c \":*)",
+      "Bash(python cs.py)",
+      "Bash(rm cs.py)"
     ]
   }
 }

@@ -147,6 +147,65 @@ function toggleFaq(i) {
   if (openFaq !== null) document.getElementById('faq-' + openFaq).classList.add('open');
 }
 
+// ── Masterclass slider
+(function () {
+  let mcIndex = 0;
+
+  function getVisible() {
+    if (window.innerWidth <= 600) return 1;
+    if (window.innerWidth <= 900) return 2;
+    return 3;
+  }
+
+  function mcUpdate() {
+    const track = document.getElementById('mc-track');
+    if (!track) return;
+    const cards = track.children;
+    const total = cards.length;
+    const vis = getVisible();
+    const maxIndex = total - vis;
+    mcIndex = Math.max(0, Math.min(mcIndex, maxIndex));
+
+    const cardWidth = cards[0].getBoundingClientRect().width;
+    const gap = 20;
+    track.style.transform = `translateX(-${mcIndex * (cardWidth + gap)}px)`;
+
+    // dots
+    const dotsEl = document.getElementById('mc-dots');
+    if (dotsEl) {
+      dotsEl.innerHTML = '';
+      const pages = maxIndex + 1;
+      for (let i = 0; i < pages; i++) {
+        const d = document.createElement('button');
+        d.className = 'mc-dot' + (i === mcIndex ? ' active' : '');
+        d.setAttribute('aria-label', 'Ir a ' + (i + 1));
+        d.onclick = () => { mcIndex = i; mcUpdate(); };
+        dotsEl.appendChild(d);
+      }
+    }
+  }
+
+  window.mcSlide = function (dir) {
+    mcIndex += dir;
+    mcUpdate();
+  };
+
+  // touch swipe
+  let touchStartX = 0;
+  document.addEventListener('DOMContentLoaded', () => {
+    const track = document.getElementById('mc-track');
+    if (!track) return;
+    track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', e => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) mcSlide(diff > 0 ? 1 : -1);
+    });
+    mcUpdate();
+  });
+
+  window.addEventListener('resize', mcUpdate);
+})();
+
 // ── Init on load
 document.addEventListener('DOMContentLoaded', () => {
   buildPills('h-pills', selectedH);

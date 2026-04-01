@@ -38,9 +38,28 @@
       <p class="sub">Un día de puertas abiertas para que tú y tus hijos vivan de primera mano el modelo educativo, recorran las instalaciones y hablen con maestros reales — sin compromisos y sin costo.</p>
       <div class="event-chips">
         <div class="event-chip"><span class="chip-label">Fecha</span><span class="chip-val">Abril 2026</span></div>
-        <div class="event-chip"><span class="chip-label">Horario</span><span class="chip-val">9:30 AM – 12:00 PM</span></div>
+        <div class="event-chip"><span class="chip-label">Horario</span><span class="chip-val">9:30 AM – 11:30 AM</span></div>
         <div class="event-chip"><span class="chip-label">Modalidad</span><span class="chip-val">Presencial en campus</span></div>
         <div class="event-chip"><span class="chip-label">Costo</span><span class="chip-val">100% gratuito</span></div>
+      </div>
+      <div id="countdown-block" style="display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 6px;align-items:center">
+        <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:.07em;margin-right:4px">El Open Day comienza en:</span>
+        <div style="background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);border-radius:10px;padding:8px 14px;text-align:center;min-width:58px">
+          <div id="cd-days" style="font-size:26px;font-weight:700;color:#fff;line-height:1">--</div>
+          <div style="font-size:10px;font-weight:600;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.05em;margin-top:3px">días</div>
+        </div>
+        <div style="background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);border-radius:10px;padding:8px 14px;text-align:center;min-width:58px">
+          <div id="cd-hours" style="font-size:26px;font-weight:700;color:#fff;line-height:1">--</div>
+          <div style="font-size:10px;font-weight:600;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.05em;margin-top:3px">horas</div>
+        </div>
+        <div style="background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);border-radius:10px;padding:8px 14px;text-align:center;min-width:58px">
+          <div id="cd-mins" style="font-size:26px;font-weight:700;color:#fff;line-height:1">--</div>
+          <div style="font-size:10px;font-weight:600;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.05em;margin-top:3px">min</div>
+        </div>
+        <div style="background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);border-radius:10px;padding:8px 14px;text-align:center;min-width:58px">
+          <div id="cd-secs" style="font-size:26px;font-weight:700;color:#EA8215;line-height:1">--</div>
+          <div style="font-size:10px;font-weight:600;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.05em;margin-top:3px">seg</div>
+        </div>
       </div>
       <ul class="benefits">
         <li><svg width="18" height="18" viewBox="0 0 20 20" fill="none" style="flex-shrink:0;margin-top:3px"><circle cx="10" cy="10" r="10" fill="#8DBA38"/><path d="M5.5 10.5L8.5 13.5L14.5 7.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Recorre las instalaciones reales del campus que te interesa</li>
@@ -101,12 +120,47 @@
   <div class="recognition-inner">
     <h2 class="section-title">Con el respaldo de instituciones líderes mundiales</h2>
     <div class="logos">
-      <div class="logo-card"><img src="https://innovaschools.edu.mx/wp-content/uploads/2024/10/world-economic-forum.png" alt="World Economic Forum"/></div>
-      <div class="logo-card"><img src="https://innovaschools.edu.mx/wp-content/uploads/2024/10/business-insider.png" alt="Business Insider"/></div>
-      <div class="logo-card"><img src="https://innovaschools.edu.mx/wp-content/uploads/2024/10/fortune.png" alt="Fortune"/></div>
-      <div class="logo-card"><img src="https://innovaschools.edu.mx/wp-content/uploads/2024/10/telefonica.png" alt="Telefónica"/></div>
-      <div class="logo-card"><img src="https://innovaschools.edu.mx/wp-content/uploads/2024/10/harvard-business-review.png" alt="Harvard Business Review"/></div>
-      <div class="logo-card"><img src="https://innovaschools.edu.mx/wp-content/uploads/2024/10/bid.png" alt="BID"/></div>
+      <div class="logo-card">
+        <img src="https://innovaschools.edu.mx/wp-content/uploads/2024/10/world-economic-forum.png" alt="World Economic Forum"/>
+        <p class="logo-quote">“Una de las redes educativas más innovadoras del mundo.”</p>
+      </div>
+      <div class="logo-card">
+        <img src="https://innovaschools.edu.mx/wp-content/uploads/2024/10/business-insider.png" alt="Business Insider"/>
+        <p class="logo-quote">“El modelo que está cambiando la educación en América Latina.”</p>
+      </div>
+      <div class="logo-card">
+        <img src="https://innovaschools.edu.mx/wp-content/uploads/2024/10/fortune.png" alt="Fortune"/>
+        <p class="logo-quote">“Educación de clase mundial a precio accesible.”</p>
+      </div>
+      <div class="logo-card">
+        <img src="https://innovaschools.edu.mx/wp-content/uploads/2024/10/telefonica.png" alt="Telefónica"/>
+        <p class="logo-quote">“Referente en educación con tecnología e innovación.”</p>
+      </div>
+      <div class="logo-card">
+        <img src="https://innovaschools.edu.mx/wp-content/uploads/2024/10/harvard-business-review.png" alt="Harvard Business Review"/>
+        <p class="logo-quote">“Revolucionando la educación básica con un modelo replicable.”</p>
+      </div>
+      <div class="logo-card">
+        <img src="https://innovaschools.edu.mx/wp-content/uploads/2024/10/bid.png" alt="BID"/>
+        <p class="logo-quote">“Innovación educativa que transforma comunidades enteras.”</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO SECTION -->
+<section style="padding:64px 0;background:#fff">
+  <div class="container" style="max-width:900px">
+    <p class="section-eyebrow" style="color:#00659D">¿Cómo es estar en Innova?</p>
+    <h2 class="section-title">Mira la experiencia por ti mismo</h2>
+    <p class="section-sub" style="margin-bottom:36px">Estudiantes y docentes te invitan a conocer el campus antes de tu visita.</p>
+    <div style="border-radius:18px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.14)">
+      <div style="position:relative;padding-bottom:56.25%;height:0;background:#111">
+        <iframe src="https://www.youtube.com/embed/Knm_86auVBo?rel=0&modestbranding=1"
+          style="position:absolute;top:0;left:0;width:100%;height:100%;border:0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen title="Conoce el campus Innova Schools"></iframe>
+      </div>
     </div>
   </div>
 </section>
@@ -116,7 +170,7 @@
     <div>
       <p class="section-eyebrow" style="color:#00659D;text-align:left">Agenda del Open Day</p>
       <h2 style="font-size:clamp(22px,3vw,32px);font-weight:700;color:#111827;line-height:1.25;margin-bottom:12px">¿Qué vas a vivir ese día?</h2>
-      <p style="font-size:16px;color:#6B7280;line-height:1.6;margin-bottom:40px">2.5 horas diseñadas para que salgas con la certeza de si Innova es la escuela correcta para tus hijos.</p>
+      <p style="font-size:16px;color:#6B7280;line-height:1.6;margin-bottom:40px">2 horas diseñadas para que salgas con la certeza de si Innova es la escuela correcta para tus hijos.</p>
       <div class="agenda-timeline">
         <div class="agenda-item">
           <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0">
@@ -149,14 +203,14 @@
         <div class="agenda-item">
           <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0">
             <div class="agenda-dot">5</div>
-            <div class="agenda-time">11:25 AM</div>
+            <div class="agenda-time">11:10 AM</div>
           </div>
           <div class="agenda-body"><h4>Admisión, colegiaturas y descuentos</h4><p>Un asesor te explica costos por nivel, las promociones disponibles para el ciclo 26-27 y el proceso completo de inscripción.</p></div>
         </div>
         <div class="agenda-item">
           <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0">
             <div class="agenda-dot">6</div>
-            <div class="agenda-time">11:45 AM</div>
+            <div class="agenda-time">11:20 AM</div>
           </div>
           <div class="agenda-body"><h4>Q&amp;A y cierre</h4><p>Preguntas directas al equipo académico, maestros y papás de la comunidad Innova. Sin guión, sin filtros.</p></div>
         </div>
@@ -165,7 +219,7 @@
     <div class="info-card">
       <h3 style="font-size:18px;font-weight:700;color:#111827;margin-bottom:24px;padding-bottom:16px;border-bottom:2px solid #F7F8FA">Detalles del evento</h3>
       <div class="info-item"><span style="font-size:20px;flex-shrink:0">📅</span><div><div style="font-size:12px;font-weight:600;color:#9CA3AF;text-transform:uppercase;letter-spacing:.06em">Fecha</div><div style="font-size:14px;font-weight:500;color:#374151;margin-top:2px">Abril 2026</div></div></div>
-      <div class="info-item"><span style="font-size:20px;flex-shrink:0">🕤</span><div><div style="font-size:12px;font-weight:600;color:#9CA3AF;text-transform:uppercase;letter-spacing:.06em">Horario</div><div style="font-size:14px;font-weight:500;color:#374151;margin-top:2px">9:30 AM – 12:00 PM</div></div></div>
+      <div class="info-item"><span style="font-size:20px;flex-shrink:0">🕤</span><div><div style="font-size:12px;font-weight:600;color:#9CA3AF;text-transform:uppercase;letter-spacing:.06em">Horario</div><div style="font-size:14px;font-weight:500;color:#374151;margin-top:2px">9:30 AM – 11:30 AM</div></div></div>
       <div class="info-item"><span style="font-size:20px;flex-shrink:0">📍</span><div><div style="font-size:12px;font-weight:600;color:#9CA3AF;text-transform:uppercase;letter-spacing:.06em">Lugar</div><div style="font-size:14px;font-weight:500;color:#374151;margin-top:2px">Campus de tu elección (12 disponibles)</div></div></div>
       <div class="info-item"><span style="font-size:20px;flex-shrink:0">👨‍👩‍👧</span><div><div style="font-size:12px;font-weight:600;color:#9CA3AF;text-transform:uppercase;letter-spacing:.06em">¿Van los hijos?</div><div style="font-size:14px;font-weight:500;color:#374151;margin-top:2px">Sí, se recomienda llevarlos</div></div></div>
       <div class="info-item"><span style="font-size:20px;flex-shrink:0">💰</span><div><div style="font-size:12px;font-weight:600;color:#9CA3AF;text-transform:uppercase;letter-spacing:.06em">Costo</div><div style="font-size:14px;font-weight:500;color:#374151;margin-top:2px">Completamente gratuito</div></div></div>
@@ -180,18 +234,44 @@
     <h2 class="section-title">¿En cuál campus quieres vivir la experiencia?</h2>
     <p class="section-sub">El Open Day se realiza en todos los campus. Elige el más cercano a ti.</p>
     <div class="campus-grid">
-      <div class="campus-card"><div class="campus-estado">Estado de México</div><div class="campus-nombre">Atizapán</div><div class="campus-niveles">Primaria · Secundaria</div></div>
-      <div class="campus-card"><div class="campus-estado">Estado de México</div><div class="campus-nombre">Coacalco</div><div class="campus-niveles">Preescolar · Primaria · Secundaria · Bachillerato</div></div>
-      <div class="campus-card"><div class="campus-estado">Estado de México</div><div class="campus-nombre">Cuautitlán Izcalli</div><div class="campus-niveles">Preescolar · Primaria · Secundaria · Bachillerato</div></div>
-      <div class="campus-card"><div class="campus-estado">Estado de México</div><div class="campus-nombre">Ecatepec</div><div class="campus-niveles">Preescolar · Primaria · Secundaria · Bachillerato</div></div>
-      <div class="campus-card"><div class="campus-estado">Estado de México</div><div class="campus-nombre">Huehuetoca</div><div class="campus-niveles">Preescolar · Primaria · Secundaria · Bachillerato</div></div>
-      <div class="campus-card"><div class="campus-estado">Estado de México</div><div class="campus-nombre">Ojo de Agua</div><div class="campus-niveles">Primaria · Secundaria · Bachillerato</div></div>
-      <div class="campus-card"><div class="campus-estado">Estado de México</div><div class="campus-nombre">Tultepec</div><div class="campus-niveles">Preescolar · Primaria · Secundaria</div></div>
-      <div class="campus-card"><div class="campus-estado">Estado de México</div><div class="campus-nombre">Zumpango</div><div class="campus-niveles">Preescolar · Primaria · Secundaria</div></div>
-      <div class="campus-card"><div class="campus-estado">Estado de México</div><div class="campus-nombre">Chalco</div><div class="campus-niveles">Primaria · Secundaria</div></div>
-      <div class="campus-card"><div class="campus-estado">Hidalgo</div><div class="campus-nombre">Tizayuca</div><div class="campus-niveles">Preescolar · Primaria · Secundaria · Bachillerato</div></div>
-      <div class="campus-card"><div class="campus-estado">Querétaro</div><div class="campus-nombre">El Marqués</div><div class="campus-niveles">Preescolar · Primaria · Secundaria · Bachillerato</div></div>
-      <div class="campus-card"><div class="campus-estado">Querétaro</div><div class="campus-nombre">La Joya</div><div class="campus-niveles">Preescolar · Primaria · Secundaria · Bachillerato</div></div>
+      <div class="campus-card"><div class="campus-card-img"><img src="https://innovaschools.edu.mx/wp-content/uploads/2021/10/campus-coacalco.jpg" alt="Campus Atizapán"/></div><div class="campus-card-body"><div class="campus-estado">Estado de México</div><div class="campus-nombre">Atizapán</div><div class="campus-niveles">Primaria · Secundaria</div></div></div>
+      <div class="campus-card"><div class="campus-card-img"><img src="https://innovaschools.edu.mx/wp-content/uploads/2021/10/campus-coacalco.jpg" alt="Campus Coacalco"/></div><div class="campus-card-body"><div class="campus-estado">Estado de México</div><div class="campus-nombre">Coacalco</div><div class="campus-niveles">Preescolar · Primaria · Secundaria · Bachillerato</div></div></div>
+      <div class="campus-card"><div class="campus-card-img"><img src="https://innovaschools.edu.mx/wp-content/uploads/2021/10/campus-coacalco.jpg" alt="Campus Cuautitlán Izcalli"/></div><div class="campus-card-body"><div class="campus-estado">Estado de México</div><div class="campus-nombre">Cuautitlán Izcalli</div><div class="campus-niveles">Preescolar · Primaria · Secundaria · Bachillerato</div></div></div>
+      <div class="campus-card"><div class="campus-card-img"><img src="https://innovaschools.edu.mx/wp-content/uploads/2021/10/campus-coacalco.jpg" alt="Campus Ecatepec"/></div><div class="campus-card-body"><div class="campus-estado">Estado de México</div><div class="campus-nombre">Ecatepec</div><div class="campus-niveles">Preescolar · Primaria · Secundaria · Bachillerato</div></div></div>
+      <div class="campus-card"><div class="campus-card-img"><img src="https://innovaschools.edu.mx/wp-content/uploads/2021/10/campus-coacalco.jpg" alt="Campus Huehuetoca"/></div><div class="campus-card-body"><div class="campus-estado">Estado de México</div><div class="campus-nombre">Huehuetoca</div><div class="campus-niveles">Preescolar · Primaria · Secundaria · Bachillerato</div></div></div>
+      <div class="campus-card"><div class="campus-card-img"><img src="https://innovaschools.edu.mx/wp-content/uploads/2021/10/campus-coacalco.jpg" alt="Campus Ojo de Agua"/></div><div class="campus-card-body"><div class="campus-estado">Estado de México</div><div class="campus-nombre">Ojo de Agua</div><div class="campus-niveles">Primaria · Secundaria · Bachillerato</div></div></div>
+      <div class="campus-card"><div class="campus-card-img"><img src="https://innovaschools.edu.mx/wp-content/uploads/2021/10/campus-coacalco.jpg" alt="Campus Tultepec"/></div><div class="campus-card-body"><div class="campus-estado">Estado de México</div><div class="campus-nombre">Tultepec</div><div class="campus-niveles">Preescolar · Primaria · Secundaria</div></div></div>
+      <div class="campus-card"><div class="campus-card-img"><img src="https://innovaschools.edu.mx/wp-content/uploads/2021/10/campus-coacalco.jpg" alt="Campus Zumpango"/></div><div class="campus-card-body"><div class="campus-estado">Estado de México</div><div class="campus-nombre">Zumpango</div><div class="campus-niveles">Preescolar · Primaria · Secundaria</div></div></div>
+      <div class="campus-card"><div class="campus-card-img"><img src="https://innovaschools.edu.mx/wp-content/uploads/2021/10/campus-coacalco.jpg" alt="Campus Chalco"/></div><div class="campus-card-body"><div class="campus-estado">Estado de México</div><div class="campus-nombre">Chalco</div><div class="campus-niveles">Primaria · Secundaria</div></div></div>
+      <div class="campus-card"><div class="campus-card-img"><img src="https://innovaschools.edu.mx/wp-content/uploads/2021/10/campus-coacalco.jpg" alt="Campus Tizayuca"/></div><div class="campus-card-body"><div class="campus-estado">Hidalgo</div><div class="campus-nombre">Tizayuca</div><div class="campus-niveles">Preescolar · Primaria · Secundaria · Bachillerato</div></div></div>
+      <div class="campus-card"><div class="campus-card-img"><img src="https://innovaschools.edu.mx/wp-content/uploads/2021/10/campus-coacalco.jpg" alt="Campus El Marqués"/></div><div class="campus-card-body"><div class="campus-estado">Querétaro</div><div class="campus-nombre">El Marqués</div><div class="campus-niveles">Preescolar · Primaria · Secundaria · Bachillerato</div></div></div>
+      <div class="campus-card"><div class="campus-card-img"><img src="https://innovaschools.edu.mx/wp-content/uploads/2021/10/campus-coacalco.jpg" alt="Campus La Joya"/></div><div class="campus-card-body"><div class="campus-estado">Querétaro</div><div class="campus-nombre">La Joya</div><div class="campus-niveles">Preescolar · Primaria · Secundaria · Bachillerato</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPUS LIFE PHOTOS -->
+<section style="padding:64px 0;background:#F7F8FA">
+  <div class="container">
+    <p class="section-eyebrow" style="color:#00659D">La experiencia en el campus</p>
+    <h2 class="section-title">Así se vive Innova Schools</h2>
+    <p class="section-sub" style="margin-bottom:36px">Instalaciones diseñadas para el aprendizaje activo, el deporte y el desarrollo integral.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto;gap:12px">
+      <div style="grid-column:1/3;grid-row:1/2;border-radius:16px;overflow:hidden;height:280px">
+        <img src="https://innovaschools.edu.mx/wp-content/uploads/2021/10/campus-coacalco.jpg" alt="Campus Innova Schools" style="width:100%;height:100%;object-fit:cover;display:block"/>
+      </div>
+      <div style="grid-column:3/4;grid-row:1/2;border-radius:16px;overflow:hidden;height:280px">
+        <img src="https://innovaschools.edu.mx/wp-content/uploads/2021/10/campus-coacalco.jpg" alt="Campus Innova Schools" style="width:100%;height:100%;object-fit:cover;display:block"/>
+      </div>
+      <div style="grid-column:1/2;grid-row:2/3;border-radius:16px;overflow:hidden;height:200px">
+        <img src="https://innovaschools.edu.mx/wp-content/uploads/2021/10/campus-coacalco.jpg" alt="Campus Innova Schools" style="width:100%;height:100%;object-fit:cover;display:block"/>
+      </div>
+      <div style="grid-column:2/3;grid-row:2/3;border-radius:16px;overflow:hidden;height:200px">
+        <img src="https://innovaschools.edu.mx/wp-content/uploads/2021/10/campus-coacalco.jpg" alt="Campus Innova Schools" style="width:100%;height:100%;object-fit:cover;display:block"/>
+      </div>
+      <div style="grid-column:3/4;grid-row:2/3;border-radius:16px;overflow:hidden;height:200px">
+        <img src="https://innovaschools.edu.mx/wp-content/uploads/2021/10/campus-coacalco.jpg" alt="Campus Innova Schools" style="width:100%;height:100%;object-fit:cover;display:block"/>
+      </div>
     </div>
   </div>
 </section>
@@ -335,13 +415,13 @@ function submitForm(e,prefix) {
     <p style="font-size:14px;color:#6B7280;line-height:1.6;margin-bottom:16px">Te enviamos la confirmación y la dirección del campus a tu correo en minutos.</p>
     <div style="background:#F7F8FA;border-radius:10px;padding:12px 16px;text-align:left">
       <p style="font-size:12px;font-weight:500;color:#374151;margin:4px 0">📍 Campus: ${campusVal}</p>
-      <p style="font-size:12px;font-weight:500;color:#374151;margin:4px 0">📅 Abril 2026 · 9:30 AM – 12:00 PM</p>
+      <p style="font-size:12px;font-weight:500;color:#374151;margin:4px 0">📅 Abril 2026 · 9:30 AM – 11:30 AM</p>
       <p style="font-size:12px;font-weight:500;color:#374151;margin:4px 0">💰 Evento 100% gratuito · Sin compromiso</p>
     </div></div>`; }
 const faqs=[
   ['¿Puedo llevar a mis hijos al Open Day?','Sí, de hecho es parte de la experiencia. Los niños pueden conocer las instalaciones e interactuar con alumnos de Innova de primera mano.'],
   ['¿El evento tiene algún costo?','No, el Open Day es completamente gratuito y sin compromiso de inscripción.'],
-  ['¿Cuánto tiempo dura el Open Day?','2.5 horas: de 9:30 AM a 12:00 PM. Incluye recorrido, clase demo, charla académica, información de admisión y Q&A.'],
+  ['¿Cuánto tiempo dura el Open Day?','2 horas: de 9:30 AM a 11:30 AM. Incluye recorrido, clase demo, charla académica, información de admisión y Q&A.'],
   ['¿Hay cupo limitado por campus?','Sí. Cada campus tiene cupo limitado para garantizar una experiencia personalizada. Reserva con anticipación.'],
   ['¿Puedo conocer los costos de colegiatura ese día?','Sí. Habrá asesores para explicarte costos, descuentos vigentes y el proceso de inscripción para el ciclo 2026-2027.'],
   ['¿Qué pasa si no puedo asistir después de reservar?','Sin problema. Avísanos por WhatsApp para liberar tu lugar. Sin compromiso ni penalización.'],
@@ -350,7 +430,25 @@ const faqList=document.getElementById('faq-list');
 faqs.forEach(([q,a],i)=>{ faqList.innerHTML+=`<div class="faq-item" id="faq-${i}"><button class="faq-btn" onclick="toggleFaq(${i})"><span>${q}</span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="#C9CDD4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-answer"><div class="faq-divider"></div><p style="font-size:14px;color:#6B7280;line-height:1.7;margin:0">${a}</p></div></div>`; });
 let openFaq=null;
 function toggleFaq(i){ if(openFaq!==null)document.getElementById('faq-'+openFaq).classList.remove('open'); openFaq=openFaq===i?null:i; if(openFaq!==null)document.getElementById('faq-'+openFaq).classList.add('open'); }
-document.addEventListener('DOMContentLoaded',()=>{ buildPills('h-pills',selectedH); buildPills('r-pills',selectedR); updateCounts(); });
+function updateCountdown() {
+  const target = new Date('2026-04-14T09:30:00-06:00');
+  const diff = target - Date.now();
+  const el = document.getElementById('countdown-block');
+  if (!el) return;
+  if (diff <= 0) { el.style.display = 'none'; return; }
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  const pad = n => String(n).padStart(2, '0');
+  document.getElementById('cd-days').textContent = pad(d);
+  document.getElementById('cd-hours').textContent = pad(h);
+  document.getElementById('cd-mins').textContent = pad(m);
+  document.getElementById('cd-secs').textContent = pad(s);
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+document.addEventListener('DOMContentLoaded',()=>{ buildPills('h-pills',selectedH); buildPills('r-pills',selectedR); updateCounts(); updateCountdown(); });
 </script>
 </body>
 </html>

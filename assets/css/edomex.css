@@ -81,15 +81,20 @@ button{font-family:'Montserrat',sans-serif;cursor:pointer}
 .recognition{background:#fff;padding:40px 24px;border-bottom:1px solid #EAEDF0}
 .recognition-inner{max-width:1140px;margin:0 auto}
 .logos{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:12px 20px;margin-top:24px}
-.logo-card{background:#00659D;border-radius:20px;padding:18px 24px;display:flex;align-items:center;justify-content:center;width:160px;height:90px;flex-shrink:0;transition:transform 150ms,box-shadow 150ms}
+.logo-card{background:#00659D;border-radius:20px;padding:14px 18px;display:flex;flex-direction:column;align-items:center;justify-content:center;width:160px;flex-shrink:0;transition:transform 150ms,box-shadow 150ms}
 .logo-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,101,157,.35)}
-.logo-card img{max-width:100%;max-height:52px;object-fit:contain;filter:brightness(0) invert(1)}
-@media(max-width:600px){.logo-card{width:130px;height:76px;padding:14px 18px}}
+.logo-card img{max-width:100%;max-height:48px;width:auto;height:auto;object-fit:contain;filter:brightness(0) invert(1)}
+.logo-quote{font-size:10px;color:rgba(255,255,255,.7);text-align:center;line-height:1.4;margin:8px 0 0;font-style:italic}
+@media(max-width:600px){.logo-card{width:130px;padding:12px 14px}}
 
 /* CAMPUS POR ESTADO */
 .campus-section{background:#F7F8FA;padding:72px 0}
 .estados-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:40px}
-.estado-block{background:#fff;border-radius:16px;padding:24px;border:1px solid #EAEDF0}
+.estado-block{background:#fff;border-radius:16px;overflow:hidden;border:1px solid #EAEDF0;padding:0}
+.estado-block-img{height:120px;overflow:hidden}
+.estado-block-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 300ms}
+.estado-block:hover .estado-block-img img{transform:scale(1.05)}
+.estado-block-body{padding:20px 24px 24px}
 .estado-block h4{font-size:16px;font-weight:800;color:#111827;margin-bottom:4px;display:flex;align-items:center;gap:8px}
 .estado-block h4 span{font-size:11px;font-weight:600;background:#E8F4FA;color:#00659D;padding:2px 8px;border-radius:999px}
 .estado-block p{font-size:12px;color:#6B7280;margin-bottom:14px}
