@@ -9,9 +9,9 @@ button { font-family: 'Montserrat', sans-serif; cursor: pointer; }
 .nav.scrolled { box-shadow: 0 2px 12px rgba(0,0,0,.08); }
 .nav-inner { max-width: 1140px; margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: center; }
 .nav-logo { height: 36px; width: auto; }
-.urgency { background: #00659D; padding: 0 16px; height: 44px; display: flex; align-items: center; justify-content: center; gap: 12px; position: sticky; top: 64px; z-index: 999; }
+.urgency { background: #EA8215; padding: 0 16px; height: 44px; display: flex; align-items: center; justify-content: center; gap: 12px; position: sticky; top: 64px; z-index: 999; }
 .urgency-text { font-size: 13px; font-weight: 600; color: #fff; white-space: nowrap; }
-.urgency-cta { background: #EA8215; color: #fff; border: none; border-radius: 999px; padding: 4px 16px; font-size: 13px; font-weight: 700; white-space: nowrap; cursor: pointer; }
+.urgency-cta { background: rgba(255,255,255,.2); color: #fff; border: 1.5px solid rgba(255,255,255,.6); border-radius: 999px; padding: 4px 16px; font-size: 13px; font-weight: 700; white-space: nowrap; cursor: pointer; }
 .urgency-close { position: absolute; right: 16px; background: none; border: none; color: rgba(255,255,255,.8); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 @media (max-width: 600px) { .urgency-text { display: none; } }
 .hero { background: linear-gradient(135deg, #0D1B2A 0%, #00659D 100%); padding: 64px 0 72px; position: relative; overflow: hidden; }
@@ -61,15 +61,15 @@ button { font-family: 'Montserrat', sans-serif; cursor: pointer; }
 .cb-box { width: 18px; height: 18px; min-width: 18px; border-radius: 4px; border: 2px solid #E2E8F0; background: #fff; display: flex; align-items: center; justify-content: center; margin-top: 1px; transition: all 150ms; }
 .cb-box.checked { border-color: #00659D; background: #00659D; }
 .cb-label { font-size: 11px; color: #374151; line-height: 1.5; }
-.submit-btn { background: #00659D; color: #fff; border: none; border-radius: 999px; padding: 14px 24px; font-size: 16px; font-weight: 700; width: 100%; min-height: 52px; box-shadow: 0 6px 20px rgba(0,101,157,.3); transition: background 200ms, transform 100ms; font-family: 'Montserrat', sans-serif; margin-top: 16px; }
-.submit-btn:hover { background: #004A7C; transform: translateY(-1px); }
+.submit-btn { background: #EA8215; color: #fff; border: none; border-radius: 999px; padding: 14px 24px; font-size: 16px; font-weight: 700; width: 100%; min-height: 52px; box-shadow: 0 6px 20px rgba(234,130,21,.3); transition: background 200ms, transform 100ms; font-family: 'Montserrat', sans-serif; margin-top: 16px; cursor: pointer; }
+.submit-btn:hover { background: #C96E0E; transform: translateY(-1px); }
 .privacy-note { font-size: 11px; color: #9CA3AF; text-align: center; margin-top: 10px; }
 .success-card { text-align: center; padding: 16px 0; }
 .success-icon { width: 64px; height: 64px; border-radius: 50%; background: #EDF6D9; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
 .recognition { background: #fff; padding: 40px 24px; border-bottom: 1px solid #EAEDF0; }
 .recognition-inner { max-width: 1140px; margin: 0 auto; }
-.logos { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 12px 20px; margin-top: 24px; }
-.logo-card { background: #00659D; border-radius: 20px; padding: 14px 18px; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 160px; flex-shrink: 0; transition: transform 150ms, box-shadow 150ms; }
+.logos { display: flex; justify-content: center; align-items: stretch; flex-wrap: wrap; gap: 12px 20px; margin-top: 24px; }
+.logo-card { background: #00659D; border-radius: 20px; padding: 14px 18px; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 160px; min-height: 110px; flex-shrink: 0; transition: transform 150ms, box-shadow 150ms; }
 .logo-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,101,157,.35); }
 .logo-card img { max-width: 100%; max-height: 48px; width: auto; height: auto; object-fit: contain; filter: brightness(0) invert(1); }
 .logo-quote { font-size: 10px; color: rgba(255,255,255,.7); text-align: center; line-height: 1.4; margin: 8px 0 0; font-style: italic; }
@@ -157,3 +157,19 @@ button { font-family: 'Montserrat', sans-serif; cursor: pointer; }
 .hero-decor-bl { position: absolute; bottom: -40px; left: -40px; width: 160px; height: 160px; border-radius: 50%; background: #EA8215; opacity: .09; pointer-events: none; }
 .btn-blue { background: #00659D; color: #fff; border: none; border-radius: 999px; padding: 14px 24px; font-size: 15px; font-weight: 700; width: 100%; min-height: 52px; margin-top: 24px; box-shadow: 0 4px 16px rgba(0,101,157,.25); transition: background 200ms; font-family: 'Montserrat', sans-serif; cursor: pointer; }
 .btn-blue:hover { background: #004A7C; }
+.btn-orange { background: #EA8215; color: #fff; border: none; border-radius: 999px; padding: 14px 24px; font-size: 15px; font-weight: 700; width: 100%; min-height: 52px; margin-top: 24px; box-shadow: 0 4px 16px rgba(234,130,21,.3); transition: background 200ms; font-family: 'Montserrat', sans-serif; cursor: pointer; }
+.btn-orange:hover { background: #C96E0E; }
+
+/* GALLERY */
+.is-gallery { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 280px 200px; gap: 12px; }
+.is-gallery-large { grid-column: 1 / 3; grid-row: 1 / 2; }
+.is-gallery-item { position: relative; border-radius: 16px; overflow: hidden; cursor: pointer; }
+.is-gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 350ms ease; }
+.is-gallery-item:hover img { transform: scale(1.05); }
+.is-gallery-zoom { position: absolute; inset: 0; background: rgba(0,101,157,.35); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 200ms; }
+.is-gallery-item:hover .is-gallery-zoom { opacity: 1; }
+@media (max-width: 640px) {
+  .is-gallery { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .is-gallery-large { grid-column: 1 / 3; height: 200px; }
+  .is-gallery-item { height: 140px; }
+}
